@@ -99,5 +99,5 @@ for example
 Backwards compatibility of FRINX Postman collections:   
 `Infrastructure`        - Works with all releases of Carbon, Boron, Beryllium FRINX ODL  
 `L2VPN Service Module`  - Works with all releases of Carbon, Boron FRINX ODL  
-`L3VPN Service Module`  - Works with all releases of Carbon, Boron FRINX ODL  
+`L3VPN Service Module`  - Works with all releases of Carbon FRINX ODL since version 3.1.3  
 `Uniconfig Framework`   - Works only with corresponding version of FRINX ODL  
