@@ -15,7 +15,7 @@ This guide explains how to run the distribution for the first time. If you have 
 
 ***System requirements***  
 **RAM:** 4GB minimum; we recommend 8GB.  
-**Java:** Releases based on Beryllium and Boron (and subsequent releases) require Java 8.  
+**Java:** FRINX distribution requires Java 8 (Openjdk 1.8.0-171 or newer).
 **Linux:** Unless stated otherwise, this documentation assumes you are using Linux. Supported distributions are Centos7 and Ubuntu 16.04.  
 To install Java:
 Ubuntu: In a terminal type
