@@ -16,7 +16,7 @@ This guide explains how to run the distribution for the first time. If you have 
 ***System requirements***  
 **RAM:** 4GB minimum; we recommend 8GB.  
 **Java:** FRINX distribution requires Java 8 (Openjdk 1.8.0-171 or newer).
-**Linux:** Unless stated otherwise, this documentation assumes you are using Linux. Supported distributions are Centos7 and Ubuntu 16.04.  
+**Linux:** Unless stated otherwise, this documentation assumes you are using Linux. Supported distributions are Centos7, Ubuntu 16.04 and Ubuntu 18.04.
 To install Java:
 Ubuntu: In a terminal type
 
@@ -82,3 +82,12 @@ Now, copy fingerprint.txt to the ONLINE machine:
 Copy frinx.license.cfg back to OFFLINE machine, replacing the file in karaf's etc folder. You will be able to start karaf normally:
 
     OFFLINE# $KARAF_HOME/bin/karaf
+
+### Activating the FRINX ODL Distribution with token read from the frinx.license.cfg file.
+When activating FRINX ODL multiple times it might be tedious to always provide your frinx license key. To avoid that you can just create file frinx.license.cfg at $HOME/.local/shares/frinx_odl/frinx.license.cfg with the content
+
+    token=<YOUR SECRET TOKEN>
+
+For example token=fasf6a4f664f6sa4f64asf. This will provide your FRINX ODL your token whenever needed. After you created the file you may run FRINX ODL with clean install just with
+
+    ./bin/karaf
