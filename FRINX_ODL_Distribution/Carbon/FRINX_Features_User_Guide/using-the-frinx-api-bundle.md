@@ -26,29 +26,6 @@ The bundle comprises four REST services which can be implemented using either CU
 3. [Configure an environment in Postman](../API.md) where you set a value for `odl_ip`.
 
 ## Usage - Operations Guide
-### Show version
-This displays the current Karaf distribution version. 
-
-You can run either:  
-With Postman REST call `show-version` which is already set up as follows:  
-- POST. (username: admin password: admin).  
-```
-http://[host]:[port]/restconf/operations/installer:show-version
-```
-- Issue the call by hitting **Send**.
-
-Example output from using Postman REST call   
-![show version example](show-version.JPG)  
-
-- Or by typing the following in a terminal window:
-```bash
-curl 'http://localhost:8181/restconf/operations/installer:show-version' -H 'Host: localhost:8181' -H 'Content-Type: application/json;charset=utf-8' -H 'Authorization: Basic YWRtaW46YWRtaW4=' -X post
-```
-
-Whether using curl or Postman, the output will be in the following format:  
-```json
-{"output":{"versions":{"controller-version":"1.2.6.frinx-SNAPSHOT"}}}
-```
 ### Feature list
 This allows a list of features to be extracted without starting up karaf. Each feature must have the following properties:
 
