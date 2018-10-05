@@ -38,6 +38,7 @@ within openconfig-platform/components data
     - Added odl-groupbasedpolicy-noop feature - this feature does not register data change listener for tenant, so policy resolution process is not executed automatically
 * Karaf
     - Make Karaf console compatible with Ubuntu 18.04 - fixed issues with command history, autocomplete, etc.
+
 #### Known Issues
 1. odl-netconf-clustered-topology:
     - Contains critical bugs and is not intended for production use, so odl-netconf-topology was modified by FRINX so that it can work in cluster. FRINX recommends using odl-netconf-topology in production environments.
