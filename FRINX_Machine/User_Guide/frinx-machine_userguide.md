@@ -214,7 +214,7 @@ In our first workflow we will create a device entry in our inventory via the FRI
 
 Click on "Metadata → Workflow Defs" and under the category "EXAMPLES" select the workflow called "EXAMPLE_add_leafspine_device". Select the tab "Input" and verify that the form is pre-filled with defaults for the first device "L1". The form should look similar to this:
 
-![alt_text](conductor-user23.png "image_tooltip")
+![alt_text](conductor_user23.png "image_tooltip")
 
 Click on the "Execute Workflow" button and you should see a console log message indicating the workflow ID and the status "OK".
 
@@ -328,7 +328,7 @@ To create a new index pattern click on "Management" in the left hand side bar, s
 
 Now click on "Discover" in the left hand side bar and you should see all devices that you have entered in the step before. You should see a view similar to the following:
 
-![alt_text](conductor-user24.png "image_tooltip")
+![alt_text](conductor_user24.png "image_tooltip")
 
 ### Mount the devices in FRINX OpenDaylight
 
@@ -338,7 +338,7 @@ Click on "Metadata → Workflow Defs" and select the workflow to mount all devic
 
 The workflow requires no additional parameter to run. After you have clicked "Execute workflow" you should see a view similar to this:
 
-![alt_text](conductor-user25.png "image_tooltip")
+![alt_text](conductor_user25.png "image_tooltip")
 
 . 
 
@@ -349,10 +349,10 @@ The workflow will only finish successfully if all devices have been mounted to F
 Execute the workflow and you should see a view similar to the following:
 
 
-![alt_text](conductor-user26.png "image_tooltip")
+![alt_text](conductor_user26.png "image_tooltip")
 
 Now click on the workflow ID. In the graphical representation of the workflow, click on the green box with the workflow name to see details about the workflow output. You should see a similar view like this:
 
-![alt_text](conductor-user27.png "image_tooltip")
+![alt_text](conductor_user27.png "image_tooltip")
 
 The workflow output shows the status of all devices and you can verify that the devices have been connected successfully.
