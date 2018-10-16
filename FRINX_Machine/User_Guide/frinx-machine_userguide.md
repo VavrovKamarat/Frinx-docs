@@ -365,11 +365,11 @@ The workflow output shows the status of all devices and you can verify that the 
 
 ​Go to the input tab of the workflow. The workflow has default parameters filled out for you and you can click on "Execute workflow".
 
-​![alt_text](images/conductor_user28.png "image_tooltip")
+​![alt_text](conductor_user28.png "image_tooltip")
 
 ​After the workflow has completed, go to Kibana and look for an entry called "lldp". You should see a similar view like the following:
 
-​![alt_text](images/conductor_user29.png "image_tooltip")
+​![alt_text](conductor_user29.png "image_tooltip")
 
 ​Exporting the IETF topology information in graphviz format:
 
@@ -377,15 +377,15 @@ The workflow output shows the status of all devices and you can verify that the 
 
 ​Click on "Metadata → Workflow Defs" and select: "LLDP_export". You should see a similar view like this:
 
-​![alt_text](images/conductor_user30.png "image_tooltip")
+​![alt_text](conductor_user30.png "image_tooltip")
 
 ​Now click on the workflow ID and click on the green box with the workflow name to display the workflow output details. Copy the escaped string under "response body" / "output" / "export" and unescape the string with a tool like this "[https://www.freeformatter.com/json-escape.html](https://www.freeformatter.com/json-escape.html)":
 
-​![alt_text](images/conductor_user31.png "image_tooltip")
+​![alt_text](conductor_user31.png "image_tooltip")
 
 ​Finally you can use any 3rd party visualization tool that can support the graphviz format like "[https://dreampuf.github.io/GraphvizOnline/](https://dreampuf.github.io/GraphvizOnline/)":
 
-​![alt_text](images/conductor_user32.png "image_tooltip")
+​![alt_text](conductor_user32.png "image_tooltip")
 
 ​All workflows can be executed manually as shown in this demo or can be scheduled via the workflow scheduling features.
 
