@@ -2,9 +2,11 @@
 [Carbon](FRINX_ODL_Distribution/carbon.md)  
 [Boron](FRINX_ODL_Distribution/boron.md)  
 [Beryllium](FRINX_ODL_Distribution/beryllium.md)  
-
+  
 ## FRINX Machine
-[User Guide](FRINX_Machine/User_Guide/frinx-machine_userguide.md)
+[Installation Instructions](https://github.com/FRINXio/FRINX-machine/blob/master/README.md)  
+[User Guide](FRINX_Machine/User_Guide/frinx-machine_userguide.md)  
+[Use Cases](FRINX_Machine/Use_Cases/frinx-machine_usecases.mkd)  
  
 ## FRINX Smart Build Engine (SBE)  
 [Introduction](FRINX_Smart_Build_Engine/Introduction/sbe_intro.md)  
