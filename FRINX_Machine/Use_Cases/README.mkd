@@ -1,0 +1,5 @@
+## FRINX Machine Use Cases
+[Running workflows to obtain platform inventory data](FRINX Machine/Use_Cases/Running workflows to obtain platform inventory data/FRINX Machine_use case_Running workflows to obtain platform inventory data.mkd)  
+[Running workflows to obtain LLDP topology data](FRINX Machine/Use_Cases/FRINX Machine_use case_Running workflows to obtain LLDP topology data.mkd)  
+[Collect LLDP Information from Devices and Build Topology](FRINX Machine/Use_Cases/FRINX Machine_use case_Collect LLDP Information from Devices and Build Topology.mkd)  
+
