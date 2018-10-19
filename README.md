@@ -6,7 +6,7 @@
 ## FRINX Machine
 [Installation Instructions](https://github.com/FRINXio/FRINX-machine/blob/master/README.md)  
 [User Guide](FRINX_Machine/User_Guide/frinx-machine_userguide.md)  
-[Use Cases](FRINX_Machine/Use_Cases/frinx-machine_usecases.mkd)  
+[Use Cases](FRINX_Machine/Use_Cases)  
  
 ## FRINX Smart Build Engine (SBE)  
 [Introduction](FRINX_Smart_Build_Engine/Introduction/sbe_intro.md)  
