@@ -2,6 +2,9 @@
 [Carbon](FRINX_ODL_Distribution/carbon.md)  
 [Boron](FRINX_ODL_Distribution/boron.md)  
 [Beryllium](FRINX_ODL_Distribution/beryllium.md)  
+
+[Q&A](FRINX_ODL_Distribution/Q&A.mkd)  
+
   
 ## FRINX Machine
 [Installation Instructions](https://github.com/FRINXio/FRINX-machine/blob/master/README.md)  
