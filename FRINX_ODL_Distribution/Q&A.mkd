@@ -1,0 +1,108 @@
+## Questions & Answers: Deep dive into FRINX architecture
+
+**Q:** What is the datastore used in FRINX (probably ODL-MDSAL)? Does ODL-MDSAL run something explicitly written for ODL or is it another open source project, like cassandra or elasticsearch?
+**A:** ODL uses a custom in memory database. It is part of MD-SAL and it is a very fast storage for YANG modeled data. It also supports persistance and clustered deployments.  
+Some documentation could be found here:   https://wiki.opendaylight.org/view/OpenDaylight_Controller:MD-SAL:Architecture:DOM_DataStore:Transactions 
+and here: http://www.industry-academia.org/download/ODL-Yang-Data-Store.pdf
+
+**Q:** Is it true that service instances are also stored in the uniconfig layer of FRINX, or is each service application responsible for storing the appropriate information?  
+**A:** Only the „outputs“ of a service are stored and managed by uniconfig (e.g. service generates bgp config for 10 devices, which is pushed into uniconfig). The services themselves are responsible for managing their configuration/operational state. But both uniconfig and services rely on the same datastore to store configuration or operational data.
+
+**Q:** When changing eg. a translation unit of FRINX or adding YANG models to the UNICONFIG layer (e.g. to support more types of configuration to be stored in FRINX) - is it possible to load the new models or add support for more features in run time?  
+**A:** Adding a new unit for existing model in runtime is possible. Adding both a unit + models into the system is also possible at runtime. Currently, we only allow openconfig models to participate in uniconfig, so if there are some other models, configuration of the system has to be changed in uniconfig to allow those namespaces as well.
+
+**Q:** How does FRINX deal with model changes (e.g. when service models change and there are existing model instances). Does FRINX provide auto rollback on all affected devices, when a transaction fails on one device?  
+**A:** Yes, all onboarded devices have full rollback implemented. But it is also possible to disable auto-rollback in uniconfig, so that successfully configured devices will keep their configuration.
+
+**Q:** When synchronizing configuration from a device into FRINX, is it possible to show the differences between the actual device configuration and the operational datastore (evtl. before actually committing device sourced changes to the operational datastore)  
+**A:** Not directly. But you can: 1. sync (update operational) 2. show diff 3. drop the changes from device by replacing operational with config
+
+**Q:** Is any NETCONF device fully supported, or must OpenConfig be mapped to netconf as well?  
+**A:** We need to implement Openconfig -> Vendor models always. We currently have translation support for XR and Junos management over NETCONF.
+
+**Q:** I've only found JUNOS CLI translation units that initialize the CLI (set terminal width/length, etc...). How are Junos devices supported? Using NETCONF?  
+**A:** Yes. You can use CLI connection (which has no openconfig mapping) to invoke any other arbitrary commands for features not exposed by Junos NETCONF.
+
+**Q:** Are the libraries that are used to access the Config Data Store model driven? e.g.: would a statement like root.device.interface["Ethernet1/1"].name = "foobar"  
+**A:** ODL has a DataBroker interface and a concept of InstanceIdentifier. Those are the model driven APIs for data access. Some info: 
+https://wiki.opendaylight.org/view/OpenDaylight_Controller:MD-SAL:Concepts
+
+**Q:** How would an access to the configuration data store look like in code using an eventual library(read/write)  
+**A:** Just to demonstrate API, in this example InterfaceConfigurations is read from CONF DS and put back to CONF DS. 
+...
+ReadWriteTransaction rwTx = dataBroker.newReadWriteTransaction();
+InstanceIdentifier<InterfaceConfigurations> iid = InstanceIdentifier.create(InterfaceConfigurations.class);
+InterfaceConfigurations ifcConfig = xrNodeReadTx.read(LogicalDatastoreType.CONFIGURATION, iid).checkedGet();
+rwTx.put(LogicalDatastoreType.CONFIGURATION, iid, ifcConfig);
+rwTx.submit();
+...  
+
+**Q:** Is it possible in FRINX to run transaction on two disjunct sets of devices simultaneously, or is the complete system locked down when committing a transaction to a set of devices?  
+**A:** It is possible to have simultanious transactions if the transactions configure different set of devices.
+
+**Q:** What access control measures does FRINX offer?  
+**A:** There is an option in AAA ODL project but it is not usualy used.
+
+**Q:** How does FRINX report problems with device interaction (e.g. when a CLI session breaks down, a device cannot be contacted, configuration items are out-of-sync, etc...)  
+**A:** State of connection is stored in OPER DS so it will be changed there and it may trigger data change event notification. If device cannot be contacted for some reason during UniConfig operation, the UniConfig operation result will contain that.
+
+**Q:** How would you do a backup of the FRINX system?  
+**A:** FRINX distribution contains project called DAEXIM which allow you to export data in json format from DS and import it back.
+
+**Q:** Is it possible to enforce policies over configuration changes (e.g. certain changes are not allowed, or assigning scripts to do a complex consistency check?)  
+**A:** It is not part of UniConfig but it can be implemented in layers above the UniConfig.
+
+**Q:** What authentication/authorization methods does FRINX offer?  
+**A:** Basic authentication by username and password, or integration with Radius.
+
+**Q:** Does FRINX come with an integrated scheduler to automate repetetive tasks? (Like syncing from network, etc...)  
+**A:** It is not part of UniConfig implementation. Hovewer it can be easly implemented in ODL or in workflow manager like Conductor (we already have integration).
+
+**Q:** In which languages are the libraries to access FRINX written?  
+**A:** FRINX ODL exposes RESTful API (RESTCONF) and NETCONF which can be used  for communication from other processes. FRINX ODL is written in JAVA and Kotlin.
+
+**Q:** Are there ready made libraries for accessing the UniConfig layer (or other layers), or is it necessary to go through the RESTCONF API (e.g. to simplify service development)  
+**A:** For communiction from other process you may use RESTCONF or NETCONF. For communication in FRINX ODL you can write code in JAVA or Kotlin which can use data objects generated from YANG:
+https://wiki.opendaylight.org/view/YANG_Tools:YANG_to_Java_Mapping
+
+**Q:** Does FRINX/ODL detect if a cluster node is down on its own or does it rely on a high availability framework?  
+**A:** Node failure can be detected by RAFT implemented in ODL or by AKKA.
+
+**Q:** How fast will FRINX integrate new ODL versions?  
+**A:** We do not integrate each ODL version, we focuse only on versions which brings important improvements. Hovewer we integrate bugfixes from ODL upstream to FRINX versions.
+
+**Q:** Is it possible for FRINX to report problems to a network monitoring system? (e.g. via NETCONF notifications, syslogs, or SNMP Traps)  
+**A:** FRINX ODL can send NETCONF notifications but it is not used for problems reporting. It can be implemented based on needs.
+
+**Q:** Is it possible to do logging additional to the logging provided by Karaf? (e.g. for troubleshooting device interaction, see what the translation unit is doing with obtained information, etc...)
+**A:** Each component supports different level of logging (ERROR, WARN, INFO, DEBUG, TRACE) so it is possible to choose how verbose the logging should be.
+
+## Additional questions
+
+**Q:** How does the conductor server know, which APIs to contact on the FRINX/ODL distribution for each specific task? How are the request bodies that conductor receives mapped to requests against the FRINX/ODL API?  
+**A:** We have provided a simple encapsulating for the tasks invoked in the example workflows implementation in python, which is part of the deployment (the microservices container) (https://github.com/FRINXio/netinfra_utils/blob/simple/workers/mount_worker.py)
+
+**Q:** Where do I find the status of the device (mounted or not) and where do I find error messages, when mounting does not work?
+**A:** To get status of the mounting process for all devices in the system, issue following request (it will show status as well as last connect attempt cause):  
+...
+„
+GET http://<VM-IP>:8181/restconf/operational/network-topology:network-topology  
+Authorization                   Basic YWRtaW46YWRtaW4=
+Accept                                application/json
+Content-Type                   application/json
+„
+...  
+    • Note: VM-IP is the ip of VM running all the docker containers ... or localhost if you execute the request directly in the VM
+    • Each workflow contains a check to verify the device is mounted ... there is a timeout of 20 * 5 seconds and if the device is not mounted in that time, the workflow fails
+    • It should be visible from the Conductor UI which tasks failed and their output (with details why). If it’s not, some output/log might be omitted between the workflow, task and ODL. We can fix that.
+    • You can also check the logs from Opendaylight... just go into container „odl“ and go into data/log folder, where you can grep the log files for the device ID
+Martin answered questions
+
+**Q:** What does mounting exactly do? Will the device connection be established, when a device is mounted or is this just the instantiation of the classes, that interact with the device?  
+**A:** First, open IO session (and keep it open). Then expose a mount-point in ODL (so that device can be managed over REST or internal API). Finally, collect any „units“ for that particular device and use the code when communicating with the device
+
+**Q:** Won’t rendering templates via conductor modify the configuration data store for the device in ODL?  
+**A**: It interacts directly with the southbound device layer to push the configuration to the device.
+
+**Q:** I've taken a look at the executed workflows in the conductor UI, and all worksflow, that I've executed failed. (mainly mount_cli_device)  
+**A:** Regarding the build error. Change ./gradlew build to  ./gradlew build -x test on line 31 in install.sh. Should disable the tests.
