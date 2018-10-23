@@ -18,9 +18,9 @@
 
 **Q:** When synchronizing configuration from a device into FRINX, is it possible to show the differences between the actual device configuration and the operational datastore (_evtl. before actually committing device sourced changes to the operational datastore_)  
 **A:** **_Not directly._**  
-**_But you can:_**
-_1. sync (update operational)_
-_2. show diff_
+**_But you can:_**  
+_1. sync (update operational)_  
+_2. show diff_  
 _3. drop the changes from device by replacing operational with config_
 
 **Q:** Is any NETCONF device fully supported, or must OpenConfig be mapped to netconf as well?  
@@ -29,7 +29,8 @@ _3. drop the changes from device by replacing operational with config_
 **Q:** I've only found JUNOS CLI translation units that initialize the CLI (_set terminal width/length, etc..._). How are Junos devices supported? Using NETCONF?  
 **A:** **_Yes. You can use CLI connection (which has no openconfig mapping) to invoke any other arbitrary commands for features not exposed by Junos NETCONF._**
 
-**Q:** Are the libraries that are used to access the Config Data Store model driven? e.g.: would a statement like root.device.interface["Ethernet1/1"].name = "foobar"  
+**Q:** Are the libraries that are used to access the Config Data Store model driven?  
+e.g.: would a statement like root.device.interface["Ethernet1/1"].name = "foobar"  
 **A:** **_ODL has a DataBroker interface and a concept of InstanceIdentifier. Those are the model driven APIs for data access._**   
 **_Some info:_**
 https://wiki.opendaylight.org/view/OpenDaylight_Controller:MD-SAL:Concepts
@@ -89,22 +90,22 @@ rwTx.submit();
 **Q:** How does the conductor server know, which APIs to contact on the FRINX/ODL distribution for each specific task? How are the request bodies that conductor receives mapped to requests against the FRINX/ODL API?
 
 **A:** **_We have provided a simple encapsulating for the tasks invoked in the example workflows implementation in python, which is part of the deployment (the microservices container):_**  
-(https://github.com/FRINXio/netinfra_utils/blob/simple/workers/mount_worker.py)
+https://github.com/FRINXio/netinfra_utils/blob/simple/workers/mount_worker.py
 
 **Q:** Where do I find the status of the device (_mounted or not_) and where do I find error messages, when mounting does not work?
 **A:** **_To get status of the mounting process for all devices in the system, issue following request (it will show status as well as last connect attempt cause):_**  
 
-„
-GET http://<VM-IP>:8181/restconf/operational/network-topology:network-topology  
-Authorization                   Basic YWRtaW46YWRtaW4=
-Accept                                application/json
-Content-Type                   application/json
-„
 
-    • _Note: VM-IP is the ip of VM running all the docker containers ... or localhost if you execute the request directly in the VM_  
-    • _Each workflow contains a check to verify the device is mounted ... there is a timeout of 20 * 5 seconds and if the device is not mounted in that time, the workflow fails_  
-    • _It should be visible from the Conductor UI which tasks failed and their output (with details why). If it’s not, some output/log might be omitted between the workflow, task and ODL. We can fix that._  
-    • _You can also check the logs from Opendaylight... just go into container „odl“ and go into data/log folder, where you can grep the log files for the device ID_
+..*GET http://<VM-IP>:8181/restconf/operational/network-topology:network-topology  
+Authorization Basic             YWRtaW46YWRtaW4=
+Accept                          application/json
+Content-Type                    application/json
+
+
+..* _Note: VM-IP is the ip of VM running all the docker containers ... or localhost if you execute the request directly in the VM_  
+..* _Each workflow contains a check to verify the device is mounted ... there is a timeout of 20 * 5 seconds and if the device is not mounted in that time, the workflow fails_  
+..* _It should be visible from the Conductor UI which tasks failed and their output (with details why). If it’s not, some output/log might be omitted between the workflow, task and ODL. We can fix that._  
+..* _You can also check the logs from Opendaylight... just go into container „odl“ and go into data/log folder, where you can grep the log files for the device ID_
 
 **Q:** What does mounting exactly do? Will the device connection be established, when a device is mounted or is this just the instantiation of the classes, that interact with the device?  
 **A:** **_First, open IO session (and keep it open). Then expose a mount-point in ODL (so that device can be managed over REST or internal API). Finally, collect any „units“ for that particular device and use the code when communicating with the device_**
