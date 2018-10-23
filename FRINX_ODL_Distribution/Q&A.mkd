@@ -87,19 +87,19 @@ rwTx.submit();
 
 ## Additional questions
 
-**Q:** How does the conductor server know, which APIs to contact on the FRINX/ODL distribution for each specific task? How are the request bodies that conductor receives mapped to requests against the FRINX/ODL API?
-
+**Q:** How does the conductor server know, which APIs to contact on the FRINX/ODL distribution for each specific task? How are the request bodies that conductor receives mapped to requests against the FRINX/ODL API?  
 **A:** **_We have provided a simple encapsulating for the tasks invoked in the example workflows implementation in python, which is part of the deployment (the microservices container):_**  
 https://github.com/FRINXio/netinfra_utils/blob/simple/workers/mount_worker.py
 
-**Q:** Where do I find the status of the device (_mounted or not_) and where do I find error messages, when mounting does not work?
+**Q:** Where do I find the status of the device (_mounted or not_) and where do I find error messages, when mounting does not work?  
 **A:** **_To get status of the mounting process for all devices in the system, issue following request (it will show status as well as last connect attempt cause):_**  
 
 
-  *GET http://<VM-IP>:8181/restconf/operational/network-topology:network-topology  
-Authorization Basic             YWRtaW46YWRtaW4=
-Accept                          application/json
-Content-Type                    application/json
+  * GET http://<VM-IP>:8181/restconf/operational/network-topology:network-topology
+
+    Authorization Basic             YWRtaW46YWRtaW4=  
+    Accept                          application/json  
+    Content-Type                    application/json
 
 
   * _Note: VM-IP is the ip of VM running all the docker containers..._  
