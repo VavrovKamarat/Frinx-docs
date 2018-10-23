@@ -96,16 +96,23 @@ https://github.com/FRINXio/netinfra_utils/blob/simple/workers/mount_worker.py
 **A:** **_To get status of the mounting process for all devices in the system, issue following request (it will show status as well as last connect attempt cause):_**  
 
 
-..*GET http://<VM-IP>:8181/restconf/operational/network-topology:network-topology  
+  *GET http://<VM-IP>:8181/restconf/operational/network-topology:network-topology  
 Authorization Basic             YWRtaW46YWRtaW4=
 Accept                          application/json
 Content-Type                    application/json
 
 
-..* _Note: VM-IP is the ip of VM running all the docker containers ... or localhost if you execute the request directly in the VM_  
-..* _Each workflow contains a check to verify the device is mounted ... there is a timeout of 20 * 5 seconds and if the device is not mounted in that time, the workflow fails_  
-..* _It should be visible from the Conductor UI which tasks failed and their output (with details why). If it’s not, some output/log might be omitted between the workflow, task and ODL. We can fix that._  
-..* _You can also check the logs from Opendaylight... just go into container „odl“ and go into data/log folder, where you can grep the log files for the device ID_
+  * _Note: VM-IP is the ip of VM running all the docker containers..._  
+    _or localhost if you execute the request directly in the VM_  
+  * _Each workflow contains a check to verify the device is mounted..._  
+    _there is a timeout of 20 * 5 seconds and if the device is not mounted in that time,_  
+    _the workflow fails_  
+  * _It should be visible from the Conductor UI which tasks failed and their output_  
+    _(with details why). If it’s not, some output/log might be omitted between the workflow,_  
+    _task and ODL. We can fix that._  
+  * _You can also check the logs from Opendaylight...  
+    _just go into container „odl“ and go into data/log folder,  
+    _where you can grep the log files for the device ID_
 
 **Q:** What does mounting exactly do? Will the device connection be established, when a device is mounted or is this just the instantiation of the classes, that interact with the device?  
 **A:** **_First, open IO session (and keep it open). Then expose a mount-point in ODL (so that device can be managed over REST or internal API). Finally, collect any „units“ for that particular device and use the code when communicating with the device_**
