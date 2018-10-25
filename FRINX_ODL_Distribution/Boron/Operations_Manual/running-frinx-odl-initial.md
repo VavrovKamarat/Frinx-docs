@@ -85,7 +85,7 @@ Copy frinx.license.cfg back to OFFLINE machine, replacing the file in karaf's e
     OFFLINE# $KARAF_HOME/bin/karaf
 
 ### Activating the FRINX ODL Distribution with token read from the frinx.license.cfg file.
-When activating FRINX ODL multiple times it might be tedious to always provide your frinx license key. To avoid that you can just create file frinx.license.cfg at $HOME/.local/shares/frinx_odl/frinx.license.cfg with the content
+When activating FRINX ODL multiple times it might be tedious to always provide your frinx license key. To avoid that you can just create file frinx.license.cfg at $HOME/.local/share/frinx_odl/frinx.license.cfg with the content
 
     token=<YOUR SECRET TOKEN>
 
