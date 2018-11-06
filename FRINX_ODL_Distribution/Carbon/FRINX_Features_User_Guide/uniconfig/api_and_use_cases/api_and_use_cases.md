@@ -159,7 +159,8 @@ curl -X POST \
     "input": {
         "target-nodes": {
             "node": ["IOSXR"]
-        }
+        },
+	"do-rollback": true
     }
 }'
 ```
@@ -213,7 +214,8 @@ curl -X POST \
     "input": {
         "target-nodes": {
             "node": ["IOSXR"]
-        }
+        },
+	"do-rollback": true
     }
 }'
 ```
@@ -258,7 +260,7 @@ curl -X POST \
     "input": {
         "target-nodes": {
             "node": ["IOSXR"]
-        }
+        },
     }
 }'
 ```
