@@ -25,4 +25,4 @@
 
 
 ## FRINX TRANSLATION UNITS DOCS  
-[Introduction](FRINX_VPP_Distribution/Introduction/introduction.md)  
+[General](TRANSLATION_UNITS_DOCS/translation_units_docs.md)  
