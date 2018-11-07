@@ -25,4 +25,4 @@
 
 
 ## FRINX TRANSLATION UNITS DOCS  
-[General](TRANSLATION_UNITS_DOCS/translation_units_docs.md)  
+[Frinx OpenConfig to translation units](https://frinxio.github.io/translation-units-docs)  
