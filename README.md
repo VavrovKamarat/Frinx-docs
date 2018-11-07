@@ -24,5 +24,5 @@
 [Troubleshooting Guide](FRINX_VPP_Distribution/Troubleshooting_Guide/troubleshooting_guide.md)  
 
 
-## FRINX TRANSLATION UNITS DOCS  
+## FRINX Translation Units Docs  
 [Frinx OpenConfig to translation units](https://frinxio.github.io/translation-units-docs)  
