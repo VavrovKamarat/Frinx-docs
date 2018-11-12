@@ -2,7 +2,7 @@
 [FRINX ODL 3.x.y (Carbon)](FRINX_ODL_Distribution/carbon.md)  
 [FRINX ODL 2.x.y (Boron)](FRINX_ODL_Distribution/boron.md)  
 [FRINX ODL 1.x.y (Beryllium)](FRINX_ODL_Distribution/beryllium.md)  
-[FRINX Translation Units Docs](TRANSLATION_UNITS_DOCS/translation_units_docs.md)  
+[FRINX Translation Units Docs](https://frinxio.github.io/translation-units-docs)  
 
 [Q&A](FRINX_ODL_Distribution/Q&A.mkd)  
 
