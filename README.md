@@ -1,7 +1,8 @@
-## FRINX ODL Distribution 
-[Carbon](FRINX_ODL_Distribution/carbon.md)  
-[Boron](FRINX_ODL_Distribution/boron.md)  
-[Beryllium](FRINX_ODL_Distribution/beryllium.md)  
+## FRINX ODL Distribution & UniConfig
+[FRINX ODL 3.x.y (Carbon)](FRINX_ODL_Distribution/carbon.md)  
+[FRINX ODL 2.x.y (Boron)](FRINX_ODL_Distribution/boron.md)  
+[FRINX ODL 1.x.y (Beryllium)](FRINX_ODL_Distribution/beryllium.md)  
+[FRINX Translation Units Docs](TRANSLATION_UNITS_DOCS/translation_units_docs.md)  
 
 [Q&A](FRINX_ODL_Distribution/Q&A.mkd)  
 
@@ -23,6 +24,3 @@
 [Operations Manual](FRINX_VPP_Distribution/operations_manual.md)  
 [Troubleshooting Guide](FRINX_VPP_Distribution/Troubleshooting_Guide/troubleshooting_guide.md)  
 
-
-## FRINX Translation Units Docs  
-[Frinx OpenConfig to translation units](https://frinxio.github.io/translation-units-docs)  
