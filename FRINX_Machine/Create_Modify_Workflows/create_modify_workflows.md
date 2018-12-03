@@ -78,13 +78,13 @@ Go to the file "frinx_rest.py" and make the following changes (highlighted text)
 ```
 import json
 
-#odl_url_base = "http://odl:8181/restconf"
-#elastic_url_base = "http://elasticsearch:9200"
-#conductor_url_base = "http://conductor-server:8080/api"
+**#odl_url_base = "http://odl:8181/restconf"**
+**#elastic_url_base = "http://elasticsearch:9200"**
+**#conductor_url_base = "http://conductor-server:8080/api"**
 
-odl_url_base = "http://localhost:8181/restconf"
-elastic_url_base = "http://localhost:9200"
-conductor_url_base = "http://localhost:8080/api"
+**odl_url_base = "http://localhost:8181/restconf"**
+**elastic_url_base = "http://localhost:9200"**
+**conductor_url_base = "http://localhost:8080/api"**
 
 odl_credentials = ("admin", "admin")
 odl_headers = {"Content-Type": "application/json"}
@@ -102,7 +102,7 @@ def parse_response(r):
 
 _Note, that "localhost" is the hostname of FRINX Machine host VM. In case you are running and developing the workers remotely, use the IP address of FRINX Machine host instead of "localhost"._  
 
-The changes that you have made in the file above will result in executing the worker tasks on your host (the machine running the FRINX Machine containers) instead of in the microservice container. Save the file with the changes and start the python workers on your host with the following command:
+**The changes that you have made in the file above will result in executing the worker tasks on your host (the machine running the FRINX Machine containers) instead of in the microservice container. Save the file with the changes and start the python workers on your host with the following command:**
 
 
 ```
@@ -320,7 +320,7 @@ def execute_add_two_integers(task):
 def start(cc):
     print('Starting add_two_integers worker')
 
-    cc.start('add_two_integers', execute_add_two_integers, False)
+    cc.start('**add_two_integers**', execute_add_two_integers, False)
 ```
 
 
@@ -334,7 +334,7 @@ Finally, we need to register our new python worker. Add the highlighted text in 
 ```
 import time
 from conductor.ConductorWorker import ConductorWorker
-import add_integer_worker
+**import add_integer_worker**
 import cli_worker
 import platform_worker
 import l3vpn_worker
@@ -350,7 +350,7 @@ def main():
     print('Starting FRINX workers')
     cc = ConductorWorker(conductor_url_base, 1, 0.1)
 
-    add_integer_worker.start(cc)
+    **add_integer_worker.start(cc)**
     cli_worker.start(cc)
     platform_worker.start(cc)
     l3vpn_worker.start(cc)
@@ -401,7 +401,7 @@ Gerhards-MacBook-Pro-2:~ gwieser$ curl -X POST \
 > "id2": "4"
 > }
 > '
-8a34dd01-b924-4a16-a7b5-6593ffcc4d66
+**8a34dd01-b924-4a16-a7b5-6593ffcc4d66**
 Gerhards-MacBook-Pro-2:~ gwieser$ 
 Gerhards-MacBook-Pro-2:~ gwieser$ curl -X GET   http://192.168.1.51:8080/api/workflow/abc3ea46-c64e-4eed-ae3d-bc45e1eb3b77   -H 'Content-Type: application/json'   -H 'Postman-Token: 5b783994-1812-4415-87ce-bf2b2cc690ed'   -H 'cache-control: no-cache' | json_pp
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -416,12 +416,12 @@ Gerhards-MacBook-Pro-2:~ gwieser$ curl -X GET   http://192.168.1.51:8080/api/wor
    },
    "schemaVersion" : 2,
    "startTime" : 1543051496322,
-   "status" : "COMPLETED",
+   **"status" : "COMPLETED",**
    "workflowId" : "abc3ea46-c64e-4eed-ae3d-bc45e1eb3b77",
    "version" : 1,
-   "output" : {
-      "title" : "magnam facilis autem"
-   },
+   **"output" : {**
+      **"title" : "magnam facilis autem"**
+   **},**
    "tasks" : [
       {
          "workflowInstanceId" : "abc3ea46-c64e-4eed-ae3d-bc45e1eb3b77",
