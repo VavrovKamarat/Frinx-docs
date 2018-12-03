@@ -381,7 +381,7 @@ In the following pictures we see how our workflow is executed from the Conductor
 
 ![alt_text](image11.png "image_tooltip")
 
-![alt_text](images12.png "image_tooltip")
+![alt_text](image12.png "image_tooltip")
 
 
 The last picture shows us the two input variable that we entered through the UI and the output being the title that we retrieved from the test API service. 
