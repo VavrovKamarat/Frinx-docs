@@ -157,10 +157,10 @@ Import both links in Postman as shown here:
 
 
 
-![alt_text](image1.png "image_tooltip")
-
-
 ![alt_text](image2.png "image_tooltip")
+
+
+![alt_text](image11.png "image_tooltip")
 
 
 Now select the conductor_workflow_env from the dropdown list and if necessary change the host variable to point to the host running FRINX Machine.
@@ -169,14 +169,14 @@ Now select the conductor_workflow_env from the dropdown list and if necessary ch
 ![alt_text](image3.png "image_tooltip")
 
 
-![alt_text](image4.png "image_tooltip")
+![alt_text](image10.png "image_tooltip")
 
 
 You should now be ready to retrieve, modify and create workflows and tasks in conductor from your Postman application. The following example shows how you can retrieve all existing workflows from the conductor server.
 
 In the CONDUCTOR collection that you imported in the previous step, go to the "Test" folder and select "List All Workflows". Click on send and conductor server will reply with all workflows it has stored. 
 
-![alt_text](image5.png "image_tooltip")
+![alt_text](image4.png "image_tooltip")
 
 
 ## Create a New Workflow
@@ -223,7 +223,7 @@ Postman-Token: 9cd87d64-679f-49e2-8873-6459d26b8033
 
 You can use any http tool (e.g. curl, …) to create the new task in Conductor via its API. The following example shows how to create the task in Conductor with Postman.
 
-![alt_text](image6.png "image_tooltip")
+![alt_text](image12.png "image_tooltip")
 
 For our second task, we will use an existing system task called "htttp_get_generic". This task exists already in our library and uses the http system task function. You do not have to create it, it is already in our collection. Its definition looks like this.
 
@@ -298,11 +298,11 @@ Postman-Token: 488d57ec-cf1d-447c-8cfc-9ea28505b98e
 
 Again, we use Postman to generate the workflow. Here is an example:
 
-![alt_text](image7.png "image_tooltip")
+![alt_text](image6.png "image_tooltip")
 
 We can now find our new workflow in the Conductor GUI.
 
-![alt_text](image8.png "image_tooltip")
+![alt_text](image1.png "image_tooltip")
 
 The next step is to create the execution logic in python. First we create a new file called "add_integer_worker.py" with the following content.
 
@@ -376,13 +376,13 @@ gwieser@gns3vm:~/FRINX-machine/microservices/netinfra_utils/workers$ python main
 
 In the following pictures we see how our workflow is executed from the Conductor UI. The UI with the entry form is auto generated from the workflow definition. 
 
+![alt_text](image7.png "image_tooltip")
+
+![alt_text](image8.png "image_tooltip")
+
+![alt_text](image5.png "image_tooltip")
+
 ![alt_text](image9.png "image_tooltip")
-
-![alt_text](image10.png "image_tooltip")
-
-![alt_text](image11.png "image_tooltip")
-
-![alt_text](image12.png "image_tooltip")
 
 
 The last picture shows us the two input variable that we entered through the UI and the output being the title that we retrieved from the test API service. 
