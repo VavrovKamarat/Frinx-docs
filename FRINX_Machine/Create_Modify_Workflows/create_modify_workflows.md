@@ -401,7 +401,7 @@ Gerhards-MacBook-Pro-2:~ gwieser$ curl -X POST \
 > "id2": "4"
 > }
 > '
-**8a34dd01-b924-4a16-a7b5-6593ffcc4d66**
+**`8a34dd01-b924-4a16-a7b5-6593ffcc4d66`**
 Gerhards-MacBook-Pro-2:~ gwieser$ 
 Gerhards-MacBook-Pro-2:~ gwieser$ curl -X GET   http://192.168.1.51:8080/api/workflow/abc3ea46-c64e-4eed-ae3d-bc45e1eb3b77   -H 'Content-Type: application/json'   -H 'Postman-Token: 5b783994-1812-4415-87ce-bf2b2cc690ed'   -H 'cache-control: no-cache' | json_pp
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -416,12 +416,12 @@ Gerhards-MacBook-Pro-2:~ gwieser$ curl -X GET   http://192.168.1.51:8080/api/wor
    },
    "schemaVersion" : 2,
    "startTime" : 1543051496322,
-   **"status" : "COMPLETED",**
+   **`"status" : "COMPLETED",`**
    "workflowId" : "abc3ea46-c64e-4eed-ae3d-bc45e1eb3b77",
    "version" : 1,
-   **"output" : {**
-      **"title" : "magnam facilis autem"**
-   **},**
+   **`"output" : {`**
+      **`"title" : "magnam facilis autem"`**
+   **`},`**
    "tasks" : [
       {
          "workflowInstanceId" : "abc3ea46-c64e-4eed-ae3d-bc45e1eb3b77",
