@@ -75,8 +75,8 @@ What you need to change:
 - .pom file of the unit
  - point to correct unit parent
  - dependencies
- - name of the unit should be in format <device>-<domain>-unit (e.g. ios-interface-unit, xr-acl-unit)
-- package name should be in format io.frinx<cli|netconf>., device name and domain (eg. io.frinx.cli.unit.ios.interface)
+ - name of the unit should be in format `<device>-<domain>-unit` (e.g. ios-interface-unit, xr-acl-unit)
+- package name should be in format `io.frinx<cli|netconf>.`, device name and domain (eg. io.frinx.cli.unit.ios.interface)
 
 What you need to add:
 - add your unit as a dependency to artifacts/pom
