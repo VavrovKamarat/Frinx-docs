@@ -82,34 +82,6 @@ What you need to add:
 - add your unit as a dependency to artifacts/pom
 - add your unit as a karaf feature
 
-There is an archetype to generate a skeleton of a translation unit. To generate a skeleton from the archetype, invoke the following command:
-
-    mvn -X archetype:generate -DarchetypeGroupId=io.frinx.cli -DarchetypeArtifactId=unit-archetype -DarchetypeVersion=0.1.0-SNAPSHOT
-
-
-You will be asked to fill in some parameters. As an example, values could be:
-
-    Define value for property 'device-type': ios
-    [INFO] Using property: device-version = *
-    Define value for property 'group-id-prefix': io.frinx.cli
-    Define value for property 'unit-domain': vrfs
-    Define value for property 'groupId' io.frinx.cli.ios.vrfs: :
-    Define value for property 'artifactId' ios-vrfs-unit: :
-    Define value for property 'version' 1.0-SNAPSHOT: :
-    [INFO] Using property: version = 1.0-SNAPSHOT
-    Define value for property 'package' io.frinx.cli.ios.vrfs: :
-    [INFO] Using property: cli-version = 0.1.0-SNAPSHOT
-    Define value for property 'unit-name' iosvrfsUnit: :
-
-
-This will generate just a single maven module called *ios-vrfs-unit*. The module contains:
-
-*   sample YANG model
-*   2 handlers handling CRUD operations for a node inside the YANG model
-*   glue code to inject itself into the CLI southbound plugin framework
-
-Running maven build should now succeed for the new unit. From this point, the unit can be extended in any way necessary.
-
 ### Installing to Opendaylight
 
 For how to run Opendaylight with the CLI southbound plugin, please refer to the [user guide][7]. To install a bundle with a new unit (e.g. previously built with maven) it is sufficient to run the following command in the karaf console:
