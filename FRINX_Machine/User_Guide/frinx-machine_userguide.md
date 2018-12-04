@@ -1,38 +1,31 @@
 # FRINX Machine User Guide
 
-FRINX Machine is a dockerized deployment of
+FRINX Machine is a dockerized deployment of 3 element. 
+Every one of them have specific responsibilities.
 
-* **FRINX Opendaylight** (network automation solution)
+### FRINX Opendaylight (network automation solution)
 
-* and **Netflix Conductor** (workflow engine)
+ * Connects to the devices in network
 
-* **Elasticsearch** (inventory and log data)
+ * Keeps connections between devices alive
+
+ * Pushes configuration data to devices
+
+ * Pulls configuration and operational data from devices
+
+### Netflix Conductor (workflow engine)
+
+ * Chains atomic tasks into complex workflows
+
+ * Defines, executes and monitors workflows (via REST or UI)
+
+### Elasticsearch (inventory and log data)
+
+ * Storing inventory data
+  
+ * Storing log data
 
 **The goal is to provide a platform enabling easy definition, execution and monitoring of complex workflows using FRINX Opendaylight.**
-
-In this deployment, responsibilities are separated as follows:
-
-* Opendaylight is used for:
-
-    * Connecting to the devices in network
-
-    * Keeping connections between devices alive
-
-    * Pushing configuration data to devices
-
-    * Pulling configuration and operational data from devices
-
-* Conductor is used for:
-
-    * Chaining atomic tasks into complex workflows
-
-    * Defining, executing, and monitoring workflows (via REST or UI)
-  
-* Elasticsearch is used for:
-  
-    * Storing inventory data
-  
-    * Storing log data
 
 An example workflow could consist of:
 
