@@ -8,7 +8,6 @@
   - [Major components](#major-components)
   - [Modules](#modules)
   - [Developing a device specific translation unit](#developing-a-device-specific-translation-unit)
-    - [Using the archetype](#using-the-archetype)
     - [Installing to Opendaylight](#installing-to-opendaylight)
     - [Testing](#testing)
     - [Choosing the right YANG models](#choosing-the-right-yang-models)
@@ -64,7 +63,24 @@ The following diagram shows project modules and their dependencies:
 
 This section provides a tutorial for developing a device specific translation unit.
 
-### Using the archetype
+The easiest way how to develop a new transaction unit
+is to copy existing one and change what you need to
+make it work. E.g. if you are creating an interface
+translation unit, the best way is to copy existing interface
+translation unit for some other device, that is already
+implemented. You can find existing units on github
+[https://github.com/FRINXio/cli-units](https://github.com/FRINXio/cli-units), [https://github.com/FRINXio/unitopo-units](https://github.com/FRINXio/unitopo-units)
+
+What you need to change:
+- .pom file of the unit
+ - point to correct unit parent
+ - dependencies
+ - name of the unit should be in format <device>-<domain>-unit (e.g. ios-interface-unit, xr-acl-unit)
+- package name should be in format io.frinx<cli|netconf>., device name and domain (eg. io.frinx.cli.unit.ios.interface)
+
+What you need to add:
+- add your unit as a dependency to artifacts/pom
+- add your unit as a karaf feature
 
 There is an archetype to generate a skeleton of a translation unit. To generate a skeleton from the archetype, invoke the following command:
 
@@ -96,7 +112,7 @@ Running maven build should now succeed for the new unit. From this point, the un
 
 ### Installing to Opendaylight
 
-For a unit generated from the archetype, you can directly install it into the already running Opendaylight CLI southbound plugin. For how to run Opendaylight with the CLI southbound plugin, please refer to the [user guide][7]. To install a bundle with a new unit (e.g. previously built with maven) it is sufficient to run the following command in the karaf console:
+For how to run Opendaylight with the CLI southbound plugin, please refer to the [user guide][7]. To install a bundle with a new unit (e.g. previously built with maven) it is sufficient to run the following command in the karaf console:
 
     bundle:install -s file:///home/devel/ios-vrfs-unit/target/ios-vrfs-unit-1.0-SNAPSHOT.jar
 
