@@ -95,7 +95,7 @@ Once karaf has fully started, you will be able to use any of the three member no
 
 For example, if you want to view information about the shard designated as **member-1** on a node, query the shard’s data by making the following HTTP request:
 
-_Note:** We recommend using Postman_
+_Note: We recommend using Postman_
 
 **HTTP Method**: GET  
 
