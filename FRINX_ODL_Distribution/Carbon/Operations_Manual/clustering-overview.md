@@ -8,11 +8,11 @@
     - [Data persistence](#data-persistence)
     - [Scaling](#scaling)
     - [Multiple node clustering](#multiple-node-clustering)
-        - [a. Setting up](#a-setting-up)
-        - [b. Info on clustering functionality](#b-info-on-clustering-functionality)
+        - [Setting up](#setting-up)
+        - [Info on clustering functionality](#info-on-clustering-functionality)
 
 <!-- /TOC -->
-Clustering enables multiple instances of the FRINX ODL Distribution to work together as one entity. Data from the in-memory MD-SAL tree is split into smaller sub-trees (inventory, topology, and default) and distributed across the machines (referred to as nodes) which are part of the cluster.
+Clustering enables multiple instances of the FRINX ODL Distribution to work together as one entity. Data from the in-memory MD-SAL tree is split into smaller sub-trees (inventory, topology, and default) and it's distributed across the machines (referred to as nodes) which are part of the cluster.
 
 This offers a number of benefits:
 
@@ -26,26 +26,29 @@ You will not lose any data gathered by FRINX ODL after a manual restart or a cra
 If you have multiple FRINX ODL instances running as a cluster, you can potentially do more work or store more data.
 
 ## Multiple node clustering  
-### a. Setting up    
+### Setting up    
 **We recommend a minimum of three nodes** because a two node cluster will become unoperational if one node goes down.
 
-To run the FRINX ODL distribution in a three node cluster (that is, on three machines), do the following:  
+To run the FRINX ODL distribution in a three node cluster, i.e. on three machines, do the following:  
 
-1\. Determine the three machines ('nodes') that will make up the cluster and copy the FRINX ODL distribution to each of those machines.  
+**1\.** Determine the three machines ('nodes') that will make up the cluster and copy the FRINX ODL distribution to each of those machines.  
 
-2\. Unzip the controller distribution.  
+**2\.** Unzip the controller distribution.  
 
-3\. In the `{FRINX ODL main}/etc` directory, edit the file `org.apache.karaf.features.cfg`: Find the line that begins with '#odlFeaturesBoot'. Remove '#' and add the feature 'odl-mdsal-clustering' (you can keep any other features you currently have listed, just use a comma to separate features). The format of that line of the file should be as follows:
+**3\.** In the `{FRINX ODL main}/etc` directory, edit the file `org.apache.karaf.features.cfg`:  
+Find the line that begins with `#odlFeaturesBoot`. Remove `#` and add the feature `odl-mdsal-clustering` (you can keep any other features you currently have listed, just use a comma to separate features).  
 
-odlFeaturesBoot=odl-mdsal-clustering
+The format of that line of the file should be as follows:
+
+	odlFeaturesBoot=odl-mdsal-clustering
 
 Save the file.
 
-4\. Run Karaf: In your main FRINX ODL directory, type
+**4\.** Run Karaf and Ii your main FRINX ODL directory, type:
 
     ./bin/karaf
 
-5\. Karaf will start up and will automatically install the odl-mdsal-clustering feature. This could take 3-4 minutes.
+**5\.** Karaf will start up and will automatically install the odl-mdsal-clustering feature. This could take 3-4 minutes.
 
 To check whether odl-mdsal-clustering has finished installing, type the following within the karaf terminal
 
@@ -55,39 +58,52 @@ Once installation is complete, an 'x' will be shown after the second column in t
 
 Three configuration files will have automatically be created in `{FRINX ODL main}/configuration/initial/`.
 
-You do not need to edit these files. We will use a script to automatically configure two of these files (`akka.conf` and `module-shards.conf`)
+You do not need to edit these files. We will use a script to automatically configure two of these files,`akka.conf` and `module-shards.conf`.
 
 Change directory to `{FRINX ODL main}/bin`
 
-Type the following command, where the first argument is an index (1,2 or 3 - according to machine 1,2 or 3) and the final three arguments are the IP addresses (example IPs are used below - replace these with IPs of your machines) of the machines in the cluster (note when you run the command on each machine you list the same three IP addresses each time). On the first machine you would run:
+Type the following command according to this method:
+
+The first argument is an index - 1,2 or 3 according to machine 1,2 or 3  
+Final three arguments are the IP addresses of the machines in the cluster.  
+When you run the command on each machine you list the same three IP addresses each time. 
+
+_Note: In the example below are used random IPs - replace them with IPs of your machines_
+
+On the first machine you run:
 
     ./configure_cluster.sh 1 10.10.199.6 10.10.199.7 10.10.199.8
 
-On the second machine you would run:
+On the second machine you run:
 
     ./configure_cluster.sh 2 10.10.199.6 10.10.199.7 10.10.199.8
 
-On the third machine you would run:   
+On the third machine you run:   
 
     ./configure_cluster.sh 3 10.10.199.6 10.10.199.7 10.10.199.8
 
-When you restart FRINX ODL (on each machine), clustering will be active.
-To restart from within the karaf terminal hold the 'CTRL' key and type the 'd' key.
-Wait for three minutes. Then in the terminal window, still in the `{FRINX ODL main}/bin` directory, type
+When you restart FRINX ODL on each machine, clustering will be active.  
+To restart from within the karaf terminal hold the 'CTRL' key and press the 'D' key.  
+
+Wait for three minutes.  
+
+Then, in the terminal window, in the `{FRINX ODL main}/bin` directory, type:
 
     ./karaf
 
-Once karaf has fully started (which can take three minutes) you will be able to use any of the three member nodes (machines) to access the data residing in the datastore.
+Once karaf has fully started, you will be able to use any of the three member nodes to access the data residing in the datastore.
 
-For example, if you want to view information about the shard designated as *member-1* on a node, query the shard’s data by making the following HTTP request (we recommend using Postman):
+For example, if you want to view information about the shard designated as **member-1** on a node, query the shard’s data by making the following HTTP request:
 
-*HTTP Method: GET*  
+_Note:** We recommend using Postman_
 
-*HTTP URL:* <http://localhost:8181/jolokia/read/org.opendaylight.controller:Category=Shards,name=member-1-shard-inventory-config,type=DistributedConfigDatastore>  
+**HTTP Method**: GET  
 
-If prompted, enter admin as both the username and password.  
+**HTTP URL:** <http://localhost:8181/jolokia/read/org.opendaylight.controller:Category=Shards,name=member-1-shard-inventory-config,type=DistributedConfigDatastore>  
 
-*HTTP: EXPECTED RESPONSE*   
+If prompted, enter "admin" as both the username and password.  
+
+**HTTP: EXPECTED RESPONSE**   
 The request should return the following information:  
 
 ```json
@@ -147,9 +163,9 @@ The request should return the following information:
 }
 ```
 
-*Data shards* are used to house all or a certain segment of various types of FRINX ODL data. For example, one shard may contain all of a particular module’s inventory data while another shard contains all of its topology data. Each shard has replicas configured, which means the same data is stored on different nodes, ensuring data persistence in the event that one node becomes unoperational.
+**Data shards** are used to house all or a certain segment of various types of FRINX ODL data. For example, one shard may contain all of a particular module’s inventory data while another shard contains all of its topology data. Each shard has replicas configured, which means the same data is stored on different nodes, ensuring data persistence in the event that one node becomes unoperational.
 
-### b. Info on clustering functionality
+### Info on clustering functionality
 After a cluster 'node' (sometimes referred to as a 'member') is started, it sends a message to each other node within the cluster, which are referred to as 'seed' nodes. The cluster node then sends a join command to the first seed node that responds. If none of its seed nodes reply, the cluster member repeats this process until it successfully establishes a connection or is shutdown.
 
 In the event that a node becomes unreachable, it remains down for a configurable period of time (10 seconds by default). Once a node goes down, you need to restart FRINX ODL on it so that it can rejoin the cluster. Once a restarted node joins a cluster, it will synchronize with the lead node automatically. 
