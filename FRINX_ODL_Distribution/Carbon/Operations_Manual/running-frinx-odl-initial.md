@@ -51,7 +51,7 @@ It can be found [here](https://frinx.io/my-licenses-information) (you need to be
 
 **Note**: FRINX ODL needs approximately 3 minutes to startup and shutdown.  
 
-To maintain system integrity, **please do not interrupt the startup by shutting down running processes** within this time.*  
+To maintain system integrity, **please do not interrupt the startup by shutting down running processes** within this time.  
 
 In the event of interruption, the initial state can be restored by entering the following commands from a terminal within your FRINX ODL main directory.  
 
