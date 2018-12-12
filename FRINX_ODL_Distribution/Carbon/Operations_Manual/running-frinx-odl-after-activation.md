@@ -129,8 +129,7 @@ With karaf running in the background (from using ./bin/start), stop it from with
 _The ODL distribution directory example_: /home/username/distribution-karaf-3.1.0.frinx  
 
 To 'reset' your distribution to a clean state and to delete any features previously installed, within your FRINX ODL distribution directory  
-
-...use the following command:
+use the following command:
 ```
     rm -rf data/ cache/ journal/ snapshots/
 ```
