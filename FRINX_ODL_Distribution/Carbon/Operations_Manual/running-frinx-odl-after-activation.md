@@ -24,8 +24,14 @@ After running for the first time and generating a local license file, you no lon
 
 This page describes how you can operate the Frinx ODL distribution in different modes. The commands have been tested in CentOS, Ubuntu 16.04 and Ubuntu 18.04.
 
-*Note that Frinx ODL needs approximately 3 minutes to startup and shutdown. To maintain system integrity, **please do not interrupt the startup and shutdown processes** within this time.*  
-*In the event of interruption, the initial state can be restored by entering the following commands from a terminal within your Frinx ODL main directory. The first command forcibly kills the Frinx ODL karaf process; the second command cleans certain directories:*
+Note: Frinx ODL needs approximately 3 minutes to startup and shutdown.  
+
+To maintain system integrity, **please do not interrupt the startup and shutdown processes** within this time.  
+
+In the event of interruption, the initial state can be restored by entering the following commands from a terminal within your Frinx ODL main directory.
+
+**First** command forcibly kills the Frinx ODL karaf process  
+**Second** command cleans certain directories:
 
 ```
 kill -9 $(pgrep  -o -f  karaf)
@@ -69,15 +75,18 @@ Type
 ```
     ./bin/client
 ```
-By default, client tries to connect on localhost, on port 8101 (the default Apache Karaf SSH port). Client accepts different options to let you connect on a remote Apache Karaf instance. You can use --help to get details about these options.
+By default, client tries to connect on localhost, on port 8101 (the default Apache Karaf SSH port).  
+Client accepts different options to let you connect on a remote Apache Karaf instance.  
 
-or type
+You can use `--help` command to get details about these options.
+
+or use command below
 ```
     ssh karaf@localhost -p 8101
 ```
-(password: karaf)
+**Password**: karaf
 
-(This connection can be local or remote.)
+This connection can be local or remote.
 
 When connected to the background process, you can logout (this closes only the ./bin/client process, but not the FRINX ODL server) by typing
 ```
@@ -96,7 +105,9 @@ Type
 
 ## Operating in 'server' mode (karaf in the foreground, without the console)
 ### Starting
-In your FRINX ODL Distribution directory, for example /home/username/distribution-karaf-3.1.0.frinx, type
+Start in your FRINX ODL Distribution directory,  
+for example /home/username/distribution-karaf-3.1.0.frinx,  
+type:
 ```
     ./bin/karaf server &
 ```
@@ -114,13 +125,21 @@ With karaf running in the background (from using ./bin/start), stop it from with
 ```
 
 ## Resetting FRINX ODL to a clean state
-To 'reset' your distribution to a clean state and delete any features previously installed type the following within your frinx ODL distribution directory (e.g. /home/username/distribution-karaf-3.1.0.frinx)
+
+_The ODL distribution directory example_: /home/username/distribution-karaf-3.1.0.frinx  
+
+To 'reset' your distribution to a clean state and to delete any features previously installed, within your FRINX ODL distribution directory  
+
+...use the following command:
 ```
     rm -rf data/ cache/ journal/ snapshots/
 ```
 
 ## Setting JAVA_HOME and other variables
-This is done by editing the 'setenv' file in the bin directory within your FRINX ODL Distribution directory. Uncomment the relevant line and set the variable as required e.g. to set the location of your Java home directory, uncomment the JAVA_HOME variable and point it to the appropriate folder depending on your Java installation:
+Edit the 'setenv' file in the bin directory within your FRINX ODL Distribution directory.  
+Uncomment the relevant line and set the variable as required:  
+
+*E.g. to set the location of your Java home directory, uncomment the JAVA_HOME variable and point it to the appropriate folder depending on your Java installation*:
 ```
     export JAVA_HOME=/opt/jdk1.8.0_151
 ```
