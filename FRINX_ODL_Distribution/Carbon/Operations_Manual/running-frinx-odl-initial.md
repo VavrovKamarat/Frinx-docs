@@ -50,7 +50,9 @@ It can be found [here](https://frinx.io/my-licenses-information) (you need to be
     ./bin/karaf frinx.createtoken [frinx-license_secret-token]
 
 **Note**: FRINX ODL needs approximately 3 minutes to startup and shutdown.  
+
 To maintain system integrity, **please do not interrupt the startup by shutting down running processes** within this time.*  
+
 In the event of interruption, the initial state can be restored by entering the following commands from a terminal within your FRINX ODL main directory.  
 
 **First** command forcibly kills the FRINX ODL karaf process  
@@ -100,10 +102,10 @@ Copy frinx.license.cfg back to OFFLINE machine, replacing the file in karaf's e
 ### Activating the FRINX ODL Distribution with token read from the frinx.license.cfg file.
 In the event of activating FRINX ODL multiple times it might be tedious to repeatedly provide your license key.  
 
-To avoid that you can just create file frinx.license.cfg at $HOME/.local/share/frinx_odl/frinx.license.cfg with the content
+To avoid that you can just create file frinx.license.cfg at $HOME/.local/share/frinx_odl/frinx.license.cfg with the content:
 
     token=<YOUR SECRET TOKEN>
 
-For example token=fasf6a4f664f6sa4f64asf. This will provide your FRINX ODL your token whenever needed. After you created the file you may run FRINX ODL with clean install just with
+For example token=fasf6a4f664f6sa4f64asf. This will provide your FRINX ODL your token whenever needed. After you created the file you may run FRINX ODL with clean install just with:
 
     ./bin/karaf
