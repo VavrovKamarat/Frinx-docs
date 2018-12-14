@@ -24,14 +24,14 @@
 ### FRINX ODL - Install features
 [Run FRINX ODL](../../Operations_Manual/running-frinx-odl-initial.html).
 
-Then within karaf, install the required features:
+Subsequently, install the required features within karaf:
 
     feature:install cli-topology cli-southbound-all-units odl-restconf
 
-This installs the CLI topology and all supported CLI translation units for various platforms e.g. IOS, IOS-XR, Huawei VRP, and Brocade Ironware.
+This installs the CLI topology and all supported CLI translation units for various platforms like for instance IOS, IOS-XR, Huawei VRP, and Brocade Ironware.
 
 ### Optional - Change logging level
-If you require more detailed logging, then in the karaf terminal, run the following command to enable DEBUG/TRACE logging:
+If you require more detailed logging, run the following command in the karaf terminal, to enable DEBUG/TRACE logging:
 
     log:set DEBUG io.frinx.cli
 
@@ -76,10 +76,12 @@ Once mounted, several other operations can be undertaken using the calls contain
 **Example**
 Mounting of CISCO IOS-XR device as CLI node.
 
-*Using Postman:*  
+Using Postman:  
+
 ![mount](mount.png)
 
-*Using Curl:*  
+Using Curl:  
+
 RPC request:  
 
 ```
@@ -106,6 +108,7 @@ curl -X PUT \
   }'
 ```
 **Description of parameters:**  
+
 "network-topology:node-id" : "IOSXR_F",  // name of node representing device  
 "cli-topology:host" : "10.0.0.203",  // IP address of device  
 "cli-topology:port" : "22",  // port on device  
@@ -122,6 +125,7 @@ curl -X PUT \
 "cli-topology:dry-run-journal-size": 150 // creates dry-run mountpoint and defines number of commands in command history for dry-run mountpoint  
 
 **Privileged mode**  
+
 When you mount a device, you can also specify its password/secret which is used (mostly on Cisco devices) to access privileged mode. This can be done by including the following additional parameter to the REST call when mounting a device: 
 
 ~~~~
@@ -131,6 +135,7 @@ When you mount a device, you can also specify its password/secret which is used 
 By default, if a Cisco device is not in privileged mode when connected to, the secret is used to enter privileged mode. If there is no secret set, the "password" will be used.
 
 **Mounting from an application**  
+
 IOS devices can also be mounted and managed from an application. For instructions, please see the end of the [Developer Guide](../../FRINX_Features_Developer_Guide/cli/cli-service-module-devguide.html)
 
 #### How to mount and manage generic Linux VM devices over REST
@@ -202,7 +207,7 @@ The mountpoint exposes standard APIs and those are:
 
 *   DataBroker
 *   RpcService
-*   and (optionally) a NotificationService
+*   NotificationService (optionally) 
 
 These are the basic APIs every mountpoint in MD-SAL needs to provide. The actual data consumed and provided by the services depends on the YANG models implemented for a particular device type.
 
@@ -238,15 +243,20 @@ The following diagram shows an IOS device translation plugin split into multiple
 ![IOS translation plugin](iosUnits.png)
 
 #### Transport layer
-There are various transport protocols available such as:
+There are transport protocols available such as:
 
 *   SSH
 *   Telnet
 
-But all of them implement the same APIs, which enables the translation layer of the CLI plugin to be completely independent of the underlying protocol in use. Deciding which transport will be used to manage a particular device is simply a matter of configuration.
+They implement the same APIs, which enables the translation layer of the CLI plugin to be completely independent of the underlying protocol in use. Deciding which transport will be used to manage a particular device is simply a matter of configuration.
 
 ## Data processing
-There are 2 types of data in the Opendaylight world: Config and Operational. This section details how these data types map to CLI commands.
+There are 2 types of data in the Opendaylight world: 
+
+*   Config
+*   Operational 
+
+This section details how these data types map to CLI commands.
 
 Just as there are 2 types of data, there are 2 streams of data in the CLI southbound plugin:
 
