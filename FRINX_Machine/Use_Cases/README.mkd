@@ -1,6 +1,6 @@
 ## FRINX Machine Use Cases
 
-Before running workflows, please, read the startup, adding and mounting device procedure documentation below.
+**Before running workflows, read the startup documentation guidance:**
 
 [Starting procedures, creating and mounting the device](Starting_procedures_and_creating_a_new_device.md)  
 
