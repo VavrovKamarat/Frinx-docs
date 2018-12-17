@@ -10,10 +10,10 @@ The outcome is that users can manage their physical network inventory (line card
 
 In the next step we will execute a workflow that collects platform information from every mounted device, converts the vendor specific information into OpenConfig format and writes the resulting data to the inventory.
 
-Click on 
+Click on:
 
 * Metadata
- * Workflow Defs
+  * Workflow Defs
 
 Then select the workflow:  
 **PLATFORM_read_components_all_from_unified_update_inventory**
@@ -27,7 +27,7 @@ Once selected, you can execute the workflow without providing additional informa
 Under
 
 * Executions
- * All
+  * All
 
 You can see the progress of the workflow, input/output data of each task and statistics associated with the workflow execution.
 
