@@ -71,31 +71,51 @@ Detailed description of workflow and task definitions along with examples can be
 
 ## Starting a workflow
 
-Open **conductor-ui** at *host:5000 *and navigate to **_Metadata > Workflow Defs_**, there is a list of all available workflow definitions, choose one and switch to tab **_Input_**.
+Initiate **Workflow UI** 
+
+1. Open web browser
+2. Type localhost:5000 
+
+Navigate to: 
+
+* Metadata
+   * Workflow Defs
+
+There is a list of all available workflow definitions.  
+Choose one and switch to tab **Input**:
 
 ![preview1](image_1.png)
 
 ### Input
 
-Workflows are supplied inputs by client when a new execution is triggered. Workflow input is a JSON payload that is available via ${workflow.input...} expressions.
+Workflows are supplied inputs by client when a new execution is triggered. 
 
-Each task in the workflow is given input based on the inputParameters template configured in workflow definition. inputParameters is a JSON fragment with value containing parameters for mapping values from input or output of a workflow or another task during the execution.
+Workflow input is a JSON payload that is available via `${workflow.input...}` expressions.
+
+Each task in the workflow is given input based on the inputParameters template configured in workflow definition. 
+
+`inputParameters` is a JSON fragment with value containing parameters for mapping values from input or output of a workflow or another task during the execution.
 
 ### Start workflow
 
 Fill in JSON generated input fields. Input fields may contain default value or description provided in workflow definition. 
 
-Press the button **_Execute workflow_** in order to start current workflow. 
+Press the button **Execute workflow** in order to start current workflow. 
 
-**Console log** provides status information about workflow execution.
+**Console log** section at the bottom provides status information about workflow execution.
 
 ![preview2](image_2.png)
 
-Executed workflows can be found at **_Executions_** tab in left menu.
+Executed workflows can be found at **Executions** tab on top of the collumn in menu on the left.
 
 ## Inspecting executed workflows 
 
-Navigate to **_Executions > All_**, where you are able to search and filter for specific workflows.
+Navigate to:
+
+* Executions
+   * All
+
+Then, search and filter for specific workflows.
 
 After clicking on specific workflow, you are able to see its details including outputs as well as other information about current workflow.
 
@@ -105,8 +125,17 @@ After clicking on specific workflow, you are able to see its details including o
 
 Workflow actions are available after clicking on specific executed workflow. 
 
-You are able to: **_terminate, rerun, restart, retry, pause or resume_** specific workflow. 
+You are able to execute these actions to a specific workflow:
 
-If you want to run previously executed workflow as new workflow with same or edited inputs, navigate to **Edit Input** tab, where you are able to edit specific inputs and run workflow again.
+ * terminate
+ * rerun
+ * restart
+ * retry
+ * pause
+ * resume
+
+Running previously executed workflow as new workflow with same or edited inputs:
+
+Navigate to **Edit Input** tab, where you are able to edit specific inputs and run workflow again.
 
 ![preview4](image_4.png)
