@@ -2,7 +2,7 @@
 
 **Before running workflows, read the startup documentation guidance:**
 
-[Starting procedures, creating and mounting the device](Starting_procedures_and_creating_a_new_device.md)  
+[Starting procedures, creating and mounting the device](Starting_procedures_and_creating_a_new_device/Starting_procedures_and_creating_a_new_device.md)  
 
 [Running workflows to obtain platform inventory data](Running_workflows_to_obtain_platform_inventory_data/use_case_obtain_platform_inventory.md)  
 [Running workflows to obtain LLDP topology data](Running_workflows_to_obtain_LLDP_topology_data/Use_case_Obtain_LLDP_Topology.md)  
