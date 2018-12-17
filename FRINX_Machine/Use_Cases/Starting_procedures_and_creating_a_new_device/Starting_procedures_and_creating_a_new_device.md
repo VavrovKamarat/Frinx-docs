@@ -40,21 +40,39 @@ After successful execution of our first workflow, we can see the the new device 
 
 Next we want to mount the device in ODL. The mount operation for NETCONF or CLI devices in ODL results in a permanent connection that is established, maintained and if necessary re-established with the device. Once a device is mounted in FRINX OpenDaylight, it can be accessed via the UniConfig framework for reading and writing configuration and operational data. The next workflow will mount the device in FRINX ODL. 
 
-Click on "Metadata → Workflow Defs" and select the workflow to mount a single device: “SOUTHBOUND_mount_cli_from_inventory”
+Click on: 
 
-If you want to mount multiple devices from the inventory choose the workflow "SOUTHBOUND_mount_all_cli_from_inventory". 
+* Metadata 
+  * Workflow Defs
+
+Then, select the workflow to mount a single device: “SOUTHBOUND_mount_cli_from_inventory”
+
+If you want to mount multiple devices from the inventory, choose the workflow **SOUTHBOUND_mount_all_cli_from_inventory**. 
 
 ![preview8](image_8_1.png)
 
-Fill out the ID of the device for a single device or fill out the optional field "type" to specify which type of device you want to mount (e.g. “ios”, “io xr”, ...).  In our case the ID is “ASR9000” to mount a single device. After you clicked on “Execute workflow” you should see a similar view like the one below:
+Fill out the ID of the device for a single device or fill out the optional field "type" to specify which type of device you want to mount (e.g. “ios”, “io xr”, ...). 
+
+In our case the ID is “ASR9000” to mount a single device. 
+
+After you clicked on “Execute workflow” you should see a similar view like the one below:
 
 ![preview9](image_9_1.png)
 
-Now we will look how the workflows are executing and how we can check if they have succeeded. The workflow that we have executed will spawn a number of sub workflows and will only show completed if all sub workflows have completed successfully. You can verify the state of main and sub-workflows in this view. Click on "Executions → All" to see the status of each workflow.
+Now we will look how the workflows are executing and how we can check if they have succeeded. 
+
+The workflow that we have executed will spawn a number of sub workflows and will only show completed if all sub workflows have completed successfully. You can verify the state of main and sub-workflows in the view below. 
+
+Click on to see the status of each workflow:
+
+* Executions
+  * All
 
 ![preview10](image_10_1.png)
 
-In this view, we can see that all workflows have completed successfully. After the main workflow was executed it has spawned of multiple sub workflows until the last workflow checks if the device was successfully mounted. The following screenshots show additional information about the sub-workflows that is relevant to analysis and troubleshooting. 
+In this view, we can see that all workflows have completed successfully. After the main workflow was executed it has spawned of multiple sub workflows until the last workflow checks if the device was successfully mounted. 
+
+The following screenshots show additional information about the sub-workflows that is relevant to analysis and troubleshooting. 
 
 ![preview12](image_12_1.png)
 
