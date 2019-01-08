@@ -49,9 +49,11 @@ It can be found [here](https://frinx.io/my-licenses-information) (you need to be
 
     ./bin/karaf frinx.createtoken [frinx-license_secret-token]
 
-**Note**: FRINX ODL needs approximately 3 minutes to startup and shutdown.  
+**Note**: In the event of copying the command shown above into the terminal, insert your unique token in place of [frinx-licence_secret-token]. Do not insert token number into the square brackets.
 
-To maintain system integrity, **please do not interrupt the startup by shutting down running processes** within this time.  
+FRINX ODL needs approximately **3 minutes** to startup and shutdown.  
+
+To maintain system integrity, please do not interrupt the startup by shutting down running processes within this time.  
 
 In the event of interruption, the initial state can be restored by entering the following commands from a terminal within your FRINX ODL main directory.  
 
