@@ -4,5 +4,7 @@
 
 [Starting procedures, creating and mounting the device](Starting_procedures_and_creating_a_new_device/Starting_procedures_and_creating_a_new_device.md)  
 
+[Running workflows to create loopback and read journal](Running_workflows_to_create_loopback_and_read_journal/use_case_to_create_loopbback_and_read_journal.md)  
+[Running workflows to save command to inventory and run on devices](Running_workflows_to_save_command_to_inventory_and_run_on_devices/use_case_run_saved_command.md)  
 [Running workflows to obtain platform inventory data](Running_workflows_to_obtain_platform_inventory_data/use_case_obtain_platform_inventory.md)  
 [Running workflows to obtain LLDP topology data](Running_workflows_to_obtain_LLDP_topology_data/Use_case_Obtain_LLDP_Topology.md)  
