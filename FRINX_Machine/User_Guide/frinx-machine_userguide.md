@@ -59,7 +59,7 @@ FRINX Machine repository is available at: [https://github.com/FRINXio/FRINX-mach
 
 Frinx-conductor repository is available at: [https://github.com/FRINXio/frinx-conductor](https://github.com/FRINXio/frinx-conductor)
 
-Specialized ODL tasks are available at: [https://github.com/FRINXio/netinfra_utils](https://github.com/FRINXio/netinfra_utils) 
+Specialized ODL tasks are available at: [https://github.com/FRINXio/FRINX-machine/tree/master/microservices/netinfra_utils](https://github.com/FRINXio/FRINX-machine/tree/master/microservices/netinfra_utils) 
 
 ## Defining a workflow
 
