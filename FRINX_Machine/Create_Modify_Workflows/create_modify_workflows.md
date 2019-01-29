@@ -39,6 +39,17 @@ drwxrwxr-x  3 gwieser gwieser 4096 Nov 23 23:38 sample-topology
 gwieser@gns3vm:~/FRINX-machine$
 ```
 
+To prepare the development environment on your host go to the FRINX-machine directory and enter:
+
+```
+sudo apt-get install python-setuptools
+```
+```
+cd conductor/client/python/
+```
+```
+sudo python setup.py install
+```
 
 Go to the folder that includes the python workers that are used for the workflow execution logic. 
 
