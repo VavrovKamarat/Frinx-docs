@@ -114,7 +114,7 @@ def parse_response(r):
 
 _Note, that "localhost" is the hostname of FRINX Machine host VM. In case you are running and developing the workers remotely, use the IP address of FRINX Machine host instead of "localhost"._  
 
-**The changes that you have made in the file above will result in executing the worker tasks on your host (the machine running the FRINX Machine containers) instead of in the microservice container. Save the file with the changes and start the python workers on your host with the following command:**
+The changes that you have made in the file above will result in executing the worker tasks on your host (the machine running the FRINX Machine containers) instead of in the microservice container. Save the file with the changes and start the python workers on your host with the following command:
 
 
 ```
