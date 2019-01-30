@@ -160,12 +160,10 @@ New workflows and tasks are created through the REST API of Conductor. We use Po
 Conductor Workflow and Tasks - Postman Collection 
 
 https://raw.githubusercontent.com/FRINXio/FRINX-machine/master/microservices/netinfra_utils/postman.json
-(https://raw.githubusercontent.com/FRINXio/FRINX-machine/master/microservices/netinfra_utils/postman.json)
 
 Postman Environment
 
 https://raw.githubusercontent.com/FRINXio/FRINX-machine/master/microservices/netinfra_utils/postman_environment.json
-(https://raw.githubusercontent.com/FRINXio/FRINX-machine/master/microservices/netinfra_utils/postman_environment.json)
 
 Import both links in Postman as shown here:
 
