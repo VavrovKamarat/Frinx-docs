@@ -12,7 +12,7 @@ Go to the directory on your host in which you have cloned the FRINX Machine repo
 
 
 ```
-gwieser@gns3vm:~/FRINX-machine$ ls -al
+$ ls -al
 total 88
 drwxrwxr-x 12 gwieser gwieser 4096 Nov 23 23:38 .
 drwxr-xr-x 15 gwieser gwieser 4096 Nov 24 00:03 ..
@@ -36,7 +36,7 @@ drwxrwxr-x  3 gwieser gwieser 4096 Nov 23 23:38 sample-topology
 -rwxrwxr-x  1 gwieser gwieser 1910 Nov 23 23:38 startup.sh
 -rwxrwxr-x  1 gwieser gwieser  135 Nov 23 23:38 teardown.sh
 -rwxrwxr-x  1 gwieser gwieser 4080 Nov 23 23:38 wait_for_it.sh
-gwieser@gns3vm:~/FRINX-machine$
+$
 ```
 
 To prepare the development environment on your host go to the FRINX-machine directory and enter:
@@ -55,8 +55,8 @@ Go to the folder that includes the python workers that are used for the workflow
 
 
 ```
-gwieser@gns3vm:~/FRINX-machine$ cd microservices/netinfra_utils/workers/
-gwieser@gns3vm:~/FRINX-machine/microservices/netinfra_utils/workers$ ls -al
+$ cd microservices/netinfra_utils/workers/
+$ ls -al
 total 180
 drwxrwxr-x 3 gwieser gwieser  4096 Nov 24 00:04 .
 drwxrwxr-x 3 gwieser gwieser  4096 Nov 23 23:39 ..
@@ -81,7 +81,7 @@ drwxrwxr-x 2 gwieser gwieser  4096 Nov 23 23:39 .idea
 -rw-rw-r-- 1 gwieser gwieser  7658 Nov 23 23:39 unified_worker.py
 -rw-rw-r-- 1 gwieser gwieser  6374 Nov 24 00:04 unified_worker.pyc
 -rw-rw-r-- 1 gwieser gwieser   338 Nov 23 23:39 workers.iml
-gwieser@gns3vm:~/FRINX-machine/microservices/netinfra_utils/workers$
+$
 ```
 
 Go to the file "frinx_rest.py" and make the following changes (highlighted text). If the file can't be written to you might have erroneously run the install as sudo. Make sure you run the FRINX Machine install script as regular user, without sudo, and you will be able to edit and save the microservice files.  
@@ -89,14 +89,15 @@ Go to the file "frinx_rest.py" and make the following changes (highlighted text)
 ```
 import json
 
-#odl_url_base = "http://odl:8181/restconf"
+<pre>
+<b>#odl_url_base = "http://odl:8181/restconf"
 #elastic_url_base = "http://elasticsearch:9200"
 #conductor_url_base = "http://conductor-server:8080/api"
 
 odl_url_base = "http://localhost:8181/restconf"
 elastic_url_base = "http://localhost:9200"
-conductor_url_base = "http://localhost:8080/api"
-
+conductor_url_base = "http://localhost:8080/api"</b>
+</pre>
 
 odl_credentials = ("admin", "admin")
 odl_headers = {"Content-Type": "application/json"}
@@ -112,13 +113,15 @@ def parse_response(r):
     return response_code, response_json
 ```
 
-_Note, that "localhost" is the hostname of FRINX Machine host VM. In case you are running and developing the workers remotely, use the IP address of FRINX Machine host instead of "localhost"._  
+_Note, that "localhost" is the hostname of FRINX Machine host VM. In case you are running and developing the workers remotely, use the IP address of FRINX Machine host instead of "localhost"._ 
+
+**Start the FRINX Machine.**
 
 The changes that you have made in the file above will result in executing the worker tasks on your host (the machine running the FRINX Machine containers) instead of in the microservice container. Save the file with the changes and start the python workers on your host with the following command:
 
 
 ```
-gwieser@gns3vm:~/FRINX-machine/microservices/netinfra_utils/workers$ python main.py
+$ python main.py
 ```
 
 
@@ -146,9 +149,9 @@ The final (optional) step is to stop the microservice container "micro". You onl
 
 
 ```
-gwieser@gns3vm:~/FRINX-machine$ sudo docker-compose stop micro
+$ sudo docker-compose stop micro
 Stopping micros ... done
-gwieser@gns3vm:~/FRINX-machine$
+$
 sudo docker-compose stop micro
 ```
 
@@ -159,11 +162,11 @@ New workflows and tasks are created through the REST API of Conductor. We use Po
 
 Conductor Workflow and Tasks - Postman Collection 
 
-https://raw.githubusercontent.com/FRINXio/FRINX-machine/master/microservices/netinfra_utils/postman.json
+[https://raw.githubusercontent.com/FRINXio/FRINX-machine/master/microservices/netinfra_utils/postman.json](https://raw.githubusercontent.com/FRINXio/FRINX-machine/master/microservices/netinfra_utils/postman.json)
 
 Postman Environment
 
-https://raw.githubusercontent.com/FRINXio/FRINX-machine/master/microservices/netinfra_utils/postman_environment.json
+[https://raw.githubusercontent.com/FRINXio/FRINX-machine/master/microservices/netinfra_utils/postman_environment.json](https://raw.githubusercontent.com/FRINXio/FRINX-machine/master/microservices/netinfra_utils/postman_environment.json)
 
 Import both links in Postman as shown here:
 
@@ -201,14 +204,14 @@ The output of our workflow will be the value of a parameter in the response from
 
 For a full documentation of tasks, workflows and the capabilities of Netflix Conductor, please go to  [https://netflix.github.io/conductor/](https://netflix.github.io/conductor/)
 
-Workflows consist of one or multiple tasks. Conductor supports two different kind of tasks: _systems tasks_ that are executed within the conductor server JVM and _worker tasks_ that are running outside of the conductor JVM.
+Workflows consist of one or multiple tasks. Conductor supports two different kinds of tasks: _system tasks_ that are executed within the conductor server JVM and _worker tasks_ that are running outside of the conductor JVM.
 
 Conductor maintains a registry of worker task types. A worker task type MUST be registered before using in a workflow. In the following example we register a new worker task. We use POST to create a new task and we use PUT to update an existing task. 
 
 
 ```
 POST /api/metadata/taskdefs HTTP/1.1
-Host: 192.168.1.51
+Host: localhost
 Content-Type: application/json
 cache-control: no-cache
 Postman-Token: 9cd87d64-679f-49e2-8873-6459d26b8033
@@ -258,7 +261,7 @@ Now we can create our first workflow by stringing together the two tasks in sequ
 
 ```
 POST /api/metadata/workflow HTTP/1.1
-Host: 192.168.1.51
+Host: localhost
 Content-Type: application/json
 cache-control: no-cache
 Postman-Token: 488d57ec-cf1d-447c-8cfc-9ea28505b98e
@@ -315,7 +318,7 @@ We can now find our new workflow in the Conductor GUI.
 
 ![alt_text](image1.png "image_tooltip")
 
-The next step is to create the execution logic in python. First we create a new file called "add_integer_worker.py" with the following content.
+The next step is to create the execution logic in python. First we create a new file called "add_integer_worker.py" in the workers directory with the following content.
 
 ```
 from __future__ import print_function
@@ -343,9 +346,10 @@ Finally, we need to register our new python worker. Add the highlighted text in 
 
 
 ```
+<pre>
 import time
 from conductor.ConductorWorker import ConductorWorker
-import add_integer_worker
+<b>import add_integer_worker</b>
 import cli_worker
 import platform_worker
 import l3vpn_worker
@@ -360,7 +364,7 @@ from frinx_rest import conductor_url_base
 def main():
     print('Starting FRINX workers')
     cc = ConductorWorker(conductor_url_base, 1, 0.1)
-    add_integer_worker.start(cc)
+    <b>add_integer_worker.start(cc)</b>
     cli_worker.start(cc)
     platform_worker.start(cc)
     l3vpn_worker.start(cc)
@@ -376,12 +380,13 @@ def main():
 
 if __name__ == '__main__':
     main()
+</pre>
 ```
 
  Save your changes and (re)start "main.py" with the following command.
 
 ```
-gwieser@gns3vm:~/FRINX-machine/microservices/netinfra_utils/workers$ python main.py
+$ python main.py
 ```
 
 In the following pictures we see how our workflow is executed from the Conductor UI. The UI with the entry form is auto generated from the workflow definition. 
@@ -401,8 +406,8 @@ Our workflow can also be executed via the REST API from command line. This is a 
 
 
 ```
-Gerhards-MacBook-Pro-2:~ gwieser$ curl -X POST \
->   http://192.168.1.51:8080/api/workflow/EXAMPLE_add_integers_and_GET_HTTP \
+$ curl -X POST \
+>   http://localhost/api/workflow/EXAMPLE_add_integers_and_GET_HTTP \
 >   -H 'Content-Type: application/json' \
 >   -H 'Postman-Token: 9eb2de1c-1668-489f-b933-93ae202c48a7' \
 >   -H 'cache-control: no-cache' \
@@ -412,8 +417,8 @@ Gerhards-MacBook-Pro-2:~ gwieser$ curl -X POST \
 > }
 > '
 8a34dd01-b924-4a16-a7b5-6593ffcc4d66
-Gerhards-MacBook-Pro-2:~ gwieser$ 
-Gerhards-MacBook-Pro-2:~ gwieser$ curl -X GET   http://192.168.1.51:8080/api/workflow/abc3ea46-c64e-4eed-ae3d-bc45e1eb3b77   -H 'Content-Type: application/json'   -H 'Postman-Token: 5b783994-1812-4415-87ce-bf2b2cc690ed'   -H 'cache-control: no-cache' | json_pp
+$ 
+$ curl -X GET   http://localhost/api/workflow/abc3ea46-c64e-4eed-ae3d-bc45e1eb3b77   -H 'Content-Type: application/json'   -H 'Postman-Token: 5b783994-1812-4415-87ce-bf2b2cc690ed'   -H 'cache-control: no-cache' | json_pp
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
 100  3385    0  3385    0     0   9370      0 --:--:-- --:--:-- --:--:--  9350
