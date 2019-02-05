@@ -88,9 +88,9 @@ Go to the file "frinx_rest.py" and make the following changes (highlighted text)
 
 ```
 import json
-
+```
 <pre>
-<b>#odl_url_base = "http://odl:8181/restconf"</b>
+<b>#odl_url_base = "http://odl:8181/restconf"
 #elastic_url_base = "http://elasticsearch:9200"
 #conductor_url_base = "http://conductor-server:8080/api"
 
@@ -99,6 +99,7 @@ elastic_url_base = "http://localhost:9200"
 conductor_url_base = "http://localhost:8080/api"</b>
 </pre>
 
+```
 odl_credentials = ("admin", "admin")
 odl_headers = {"Content-Type": "application/json"}
 
@@ -346,10 +347,13 @@ Finally, we need to register our new python worker. Add the highlighted text in 
 
 
 ```
-<pre>
 import time
 from conductor.ConductorWorker import ConductorWorker
+```
+<pre>
 <b>import add_integer_worker</b>
+</pre>
+```
 import cli_worker
 import platform_worker
 import l3vpn_worker
@@ -364,7 +368,11 @@ from frinx_rest import conductor_url_base
 def main():
     print('Starting FRINX workers')
     cc = ConductorWorker(conductor_url_base, 1, 0.1)
+```
+<pre>
     <b>add_integer_worker.start(cc)</b>
+</pre>
+```
     cli_worker.start(cc)
     platform_worker.start(cc)
     l3vpn_worker.start(cc)
@@ -380,7 +388,6 @@ def main():
 
 if __name__ == '__main__':
     main()
-</pre>
 ```
 
  Save your changes and (re)start "main.py" with the following command.
