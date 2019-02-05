@@ -89,8 +89,8 @@ Go to the file "frinx_rest.py" and make the following changes (highlighted text)
 ```
 import json
 
-<pre
-<b>#odl_url_base = "http://odl:8181/restconf"
+<pre>
+<b>#odl_url_base = "http://odl:8181/restconf"</b>
 #elastic_url_base = "http://elasticsearch:9200"
 #conductor_url_base = "http://conductor-server:8080/api"
 
