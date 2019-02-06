@@ -118,7 +118,13 @@ _Note, that "localhost" is the hostname of FRINX Machine host VM. In case you ar
 
 **Start the FRINX Machine.**
 
-The changes that you have made in the file above will result in executing the worker tasks on your host (the machine running the FRINX Machine containers) instead of in the microservice container. Save the file with the changes and start the python workers on your host with the following command:
+The changes that you have made in the file above will result in executing the worker tasks on your host (the machine running the FRINX Machine containers) instead of in the microservice container. Therefore you need to stop micros container with this command:
+
+```
+$ sudo docker stop micros
+```
+
+Save the file with the changes and start the python workers on your host with the following command:
 
 
 ```
@@ -172,26 +178,26 @@ Postman Environment
 Import both links in Postman as shown here:
 
 
-![alt_text](image2.png "image_tooltip")
+![alt_text](image2.jpg "image_tooltip")
 
 
-![alt_text](image11.png "image_tooltip")
+![alt_text](image11.jpg "image_tooltip")
 
 
 Now select the conductor_workflow_env from the dropdown list and if necessary change the host variable to point to the host running FRINX Machine.
 
 
-![alt_text](image3.png "image_tooltip")
+![alt_text](image3.jpg "image_tooltip")
 
 
-![alt_text](image10.png "image_tooltip")
+![alt_text](image10.jpg "image_tooltip")
 
 
 You should now be ready to retrieve, modify and create workflows and tasks in conductor from your Postman application. The following example shows how you can retrieve all existing workflows from the conductor server.
 
 In the CONDUCTOR collection that you imported in the previous step, go to the "Test" folder and select "List All Workflows". Click on send and conductor server will reply with all workflows it has stored. 
 
-![alt_text](image4.png "image_tooltip")
+![alt_text](image4.jpg "image_tooltip")
 
 
 ## Create a New Workflow
@@ -238,7 +244,7 @@ Postman-Token: 9cd87d64-679f-49e2-8873-6459d26b8033
 
 You can use any http tool (e.g. curl, …) to create the new task in Conductor via its API. The following example shows how to create the task in Conductor with Postman.
 
-![alt_text](image12.png "image_tooltip")
+![alt_text](image12.jpg "image_tooltip")
 
 For our second task, we will use an existing system task called "htttp_get_generic". This task exists already in our library and uses the http system task function. You do not have to create it, it is already in our collection. Its definition looks like this.
 
@@ -313,7 +319,7 @@ Postman-Token: 488d57ec-cf1d-447c-8cfc-9ea28505b98e
 
 Again, we use Postman to generate the workflow. Here is an example:
 
-![alt_text](image6.png "image_tooltip")
+![alt_text](image6.jpg "image_tooltip")
 
 We can now find our new workflow in the Conductor GUI.
 
