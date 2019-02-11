@@ -190,7 +190,7 @@ DELETE   http://localhost:8181/restconf/config/network-topology:network-topology
 ```
 The last element of the URL is the name of the instance and its predecessor is the type of that module (In our case the type is **sal-netconf-connector** and name **new-netconf-device**). The type and name are actually the keys of the module list.  
 
-#### Adjusting reconnection settings (#adjusting-reconnection-settings)
+#### Adjusting reconnection settings <a name="adjusting-reconnection-settings"></a>
 
 There are three configurable parameters from REST API while mounting the device. Through these we can adjust reconnection settings:
 
