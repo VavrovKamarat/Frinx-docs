@@ -33,6 +33,7 @@ In terms of RFCs, the connector supports:
 [RFC-5277](https://tools.ietf.org/html/rfc5277)  
 [RFC-6022](https://tools.ietf.org/html/rfc6022)  
 [draft-ietf-netconf-yang-library-06](https://tools.ietf.org/html/draft-ietf-netconf-yang-library-06)  
+
 **Netconf-connector is fully model-driven (utilizing the YANG modeling language) so in addition to the above RFCs, it supports any data/RPC/notifications described by a YANG model that is implemented by the device.**  
 
 *Tip
@@ -187,6 +188,29 @@ Using RESTCONF one can also destroy an instance of a module. In case of netconf-
 DELETE   http://localhost:8181/restconf/config/network-topology:network-topology/topology/topology-netconf/node/controller-config/yang-ext:mount/config:modules/module/odl-sal-netconf-connector-cfg:sal-netconf-connector/new-netconf-device  
 ```
 The last element of the URL is the name of the instance and its predecessor is the type of that module (In our case the type is **sal-netconf-connector** and name **new-netconf-device**). The type and name are actually the keys of the module list.  
+
+#### Adjusting reconnection settings
+
+There are three configurable parameters from REST API while mounting the device. Through these we can adjust reconnection settings:
+
+1. **Maximum number of connection attempts** - Maximum number of connections retries; when it is reached, the restconf won't try to reconnect to device anymore. By default, this threshold is disabled by value 0.  
+2. **Initial timeout between attempts** - The first timeout between reconnection attempts in milliseconds. The default timeout value is set to 2000ms.  
+3. **Sleep factor** - After each reconnection attempt, the delay between reconnection attempts is multiplied by this factor. By default, it is set to 1.5. This means that the next delay bewtween attempts will be 3000ms, then it will be 4500ms, etc.
+
+Example of setting of described parameters at creation of netconf mountpoint - maximum connection attempts, initial delay between attempts and sleep factor:
+
+```
+{
+   "node": [
+       {
+           ...
+           "netconf-node-topology:max-connection-attempts": 10,
+           "netconf-node-topology:between-attempts-timeout-millis": 8000,
+           "netconf-node-topology:sleep-factor": 1.0
+       }
+   ]
+}
+```
 
 ## How does the FRINX ODL Distribution use NETCONF?
 The FRINX ODL Distribution's southbound APIs use a NETCONF connector to communicate with downstream devices. The northbound APIs expose the YANG models of connected devices. This makes it possible to examine the operational and config datastores and to configure devices using RPCs. RESTCONF maps a subset of these YANG models to a RESTful interface.
