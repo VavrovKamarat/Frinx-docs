@@ -14,9 +14,9 @@
     - [Implementing handlers](#implementing-handlers)
     - [Implementing RPCs](#implementing-rpcs)
     - [Mounting and managing IOS devices from an application](#mounting-and-managing-ios-devices-from-an-application)
-  - [Reading of CLI and device configuration](#reading-of-cli-and-device-configuration)
-    - [Process of reading CLI configuration from device](#process-of-reading-cli-configuration-from-device)
-    - [Reading of configuration from CLI network device](#reading-of-configuration-from-cli-network-device)
+  - [Reading of CLI and device configuraiton](#reading-of-cli-and-dev-conf)
+    - [Process of reading CLI configuration from device](#process-of-reading-cli-conf-from-dev)
+    - [Reading of configuration from CLI network device - different scenarios](#reading-of-conf-from-cli-network-dev)
 
 <!-- TOC END -->
 
@@ -217,17 +217,17 @@ And finally DataBroker service can be used to manage the device:
 
 In this case *Version* operational data is being read from the device. In order to be able to do so, make sure to add a maven dependency on the IOS unit containing the appropriate YANG model.
 
-## <a name="reading-of-cli-and-device-configuration"></a>Reading of CLI and device configuraiton 
+## Reading of CLI and device configuraiton <a name="reading-of-cli-and-dev-conf"></a>
 
 CLI readers maintain translation between device and yang models. We're sending read commands to the device and outputs are cached. This process is shown below.
 
-### <a name="process-of-reading-cli-configuration-from-device"></a>Process of reading CLI configuration from device 
+### Process of reading CLI configuration from device <a name="process-of-reading-cli-conf-from-dev"></a>
 
 The diagram below shows the general use of the process
 
 ![Reading CLI conf from device][12]
 
-### <a name="reading-of-configuration-from-cli-network-device"></a>Reading of configuration from CLI network device - different scenarios 
+### Reading of configuration from CLI network device - different scenarios <a name="reading-of-conf-from-cli-network-dev"></a>
 
 The diagram below shows four specific scenarios:
 
