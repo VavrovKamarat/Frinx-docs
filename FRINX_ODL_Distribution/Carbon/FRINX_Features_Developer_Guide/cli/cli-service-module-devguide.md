@@ -14,6 +14,9 @@
     - [Implementing handlers](#implementing-handlers)
     - [Implementing RPCs](#implementing-rpcs)
     - [Mounting and managing IOS devices from an application](#mounting-and-managing-ios-devices-from-an-application)
+  - [Reading of CLI and device configuration](#reading-of-cli-and-device-configuration)
+    - [Process of reading CLI configuration from device](#process-of-reading-cli-configuration-from-device)
+    - [Reading of configuration from CLI network device](#reading-of-configuration-from-cli-network-device)
 
 <!-- TOC END -->
 
@@ -214,6 +217,27 @@ And finally DataBroker service can be used to manage the device:
 
 In this case *Version* operational data is being read from the device. In order to be able to do so, make sure to add a maven dependency on the IOS unit containing the appropriate YANG model.
 
+## <a name="reading-of-cli-and-device-configuration"></a>Reading of CLI and device configuraiton 
+
+CLI readers maintain translation between device and yang models. We're sending read commands to the device and outputs are cached. This process is shown below.
+
+### <a name="process-of-reading-cli-configuration-from-device"></a>Process of reading CLI configuration from device 
+
+The diagram below shows the general use of the process
+
+![Reading CLI conf from device][12]
+
+### <a name="reading-of-configuration-from-cli-network-device"></a>Reading of configuration from CLI network device - different scenarios 
+
+The diagram below shows four specific scenarios:
+
+ 1. Configuration is read using show running-config pattern for the first time
+ 2. Another configuration is read using running-config pattern - cache can be used
+ 3. BGP configuration/state is read using "show route bgp 100" - the running-config pattern is not used
+ 4. BGP configuration/state is read using "show route bgp 100" again - cached can be used
+
+![Different scenarios][13]
+
  [1]: ODL.png "ODL"
  [2]: HC1.png "HC"
  [3]: HCsMdsal.png "Honeycomb's core"
@@ -225,3 +249,5 @@ In this case *Version* operational data is being read from the device. In order 
  [9]: https://github.com/FRINXio/cli-units/blob/master/ios/interface/src/main/java/io/frinx/cli/unit/ios/ifc/ifc/InterfaceConfigWriter.java
  [10]: https://github.com/FRINXio/cli-units/blob/master/ios/interface/src/main/java/io/frinx/cli/unit/ios/ifc/subifc/Ipv4ConfigWriter.java
  [11]: https://github.com/FRINXio/cli-units/blob/master/ios/interface/src/main/java/io/frinx/cli/unit/ios/ifc/IosInterfaceUnit.java
+ [12]: Process-of-reading-of-CLI-configuration-from-device.png "Reading CLI conf from device"
+ [13]: Reading-of-configuration-from-CLI-network-device-different-scenarios.png "Different scenarios"
