@@ -2,24 +2,26 @@
 [FRINX Features Developer Guide main page](https://frinxio.github.io/Frinx-docs/FRINX_ODL_Distribution/Carbon/developer_guide.html)
 # Developer Guide: CLI
 
-<!-- TOC START min:1 max:3 link:true update:true -->
-- [Developer Guide: CLI](#developer-guide-cli)
-  - [Building on honeycomb](#building-on-honeycomb)
-  - [Major components](#major-components)
-  - [Modules](#modules)
-  - [Developing a device specific translation unit](#developing-a-device-specific-translation-unit)
-    - [Installing to Opendaylight](#installing-to-opendaylight)
-    - [Testing](#testing)
-    - [Choosing the right YANG models](#choosing-the-right-yang-models)
-    - [Implementing handlers](#implementing-handlers)
-    - [Implementing RPCs](#implementing-rpcs)
-    - [Mounting and managing IOS devices from an application](#mounting-and-managing-ios-devices-from-an-application)
-  - [Reading of CLI and device configuraiton](#reading-of-cli-and-dev-conf)
-    - [Process of reading CLI configuration from device](#process-of-reading-cli-conf-from-dev)
-    - [Reading of configuration from CLI network device - different scenarios](#reading-of-conf-from-cli-network-dev)
+<!-- TOC -->
 
-<!-- TOC END -->
+- [Developer Guide: CLI](#developer-guide--cli)
+  * [Building on honeycomb](#building-on-honeycomb)
+  * [Major components](#major-components)
+  * [Modules](#modules)
+  * [Developing a device specific translation unit](#developing-a-device-specific-translation-unit)
+    + [Installing to Opendaylight](#installing-to-opendaylight)
+      - [As a feature](#as-a-feature)
+    + [Testing](#testing)
+    + [Choosing the right YANG models](#choosing-the-right-yang-models)
+    + [Implementing handlers](#implementing-handlers)
+      - [Dependencies between writing handlers (writers)](#dependencies-between-writing-handlers--writers-)
+    + [Implementing RPCs](#implementing-rpcs)
+    + [Mounting and managing IOS devices from an application](#mounting-and-managing-ios-devices-from-an-application)
+  * [Reading of CLI and device configuraiton](#reading-of-cli-and-device-configuraiton)
+    + [Process of reading CLI configuration from device](#process-of-reading-cli-configuration-from-device)
+    + [Reading of configuration from CLI network device - different scenarios](#reading-of-configuration-from-cli-network-device---different-scenarios)
 
+<!-- /TOC -->
 This document provides developer-level details for the FRINX CLI southbound plugin, both for the framework itself as well as for the pluggable translation units.
 
 Pre-requisite reading: - Honeycomb design documentation:  
@@ -217,17 +219,17 @@ And finally DataBroker service can be used to manage the device:
 
 In this case *Version* operational data is being read from the device. In order to be able to do so, make sure to add a maven dependency on the IOS unit containing the appropriate YANG model.
 
-## Reading of CLI and device configuraiton <a name="reading-of-cli-and-dev-conf"></a>
+## Reading of CLI and device configuraiton 
 
 CLI readers maintain translation between device and yang models. We're sending read commands to the device and outputs are cached. This process is shown below.
 
-### Process of reading CLI configuration from device <a name="process-of-reading-cli-conf-from-dev"></a>
+### Process of reading CLI configuration from device 
 
 The diagram below shows the general use of the process
 
 ![Reading CLI conf from device][12]
 
-### Reading of configuration from CLI network device - different scenarios <a name="reading-of-conf-from-cli-network-dev"></a>
+### Reading of configuration from CLI network device - different scenarios 
 
 The diagram below shows four specific scenarios:
 
