@@ -1,25 +1,38 @@
 [Documentation main page](https://frinxio.github.io/Frinx-docs/)
 [FRINX Features User Guide main page](https://frinxio.github.io/Frinx-docs/FRINX_ODL_Distribution/Carbon/user_guide.html)
 # CLI Service Module User Guide
-<!-- TOC START min:1 max:4 link:true update:true -->
-- [CLI Service Module User Guide](#cli-service-module-user-guide)
-  - [Usage - Setup](#usage---setup)
-    - [FRINX ODL - Install features](#frinx-odl---install-features)
-    - [Optional - Change logging level](#optional---change-logging-level)
-    - [Postman - Import collection](#postman---import-collection)
-  - [Introduction](#introduction)
-  - [Usage - Operations Guide](#usage---operations-guide)
-    - [Mounting a CLI device](#mounting-a-cli-device)
-  - [Architecture](#architecture)
-    - [CLI topology](#cli-topology)
-    - [CLI mountpoint](#cli-mountpoint)
-  - [Data processing](#data-processing)
-    - [Transactions and revert](#transactions-and-revert)
-    - [Reconciliation](#reconciliation)
-  - [Supported devices](#supported-devices)
-  - [Feature history guide](#feature-history-guide)
 
-<!-- TOC END -->
+Table of Contents:
+
+- [CLI Service Module User Guide](#cli-service-module-user-guide)
+  * [Usage - Setup](#usage---setup)
+    + [FRINX ODL - Install features](#frinx-odl---install-features)
+    + [Optional - Change logging level](#optional---change-logging-level)
+    + [Postman - Import collection](#postman---import-collection)
+  * [Introduction](#introduction)
+  * [Usage - Operations Guide](#usage---operations-guide)
+    + [Mounting a CLI device](#mounting-a-cli-device)
+      - [How to mount and manage IOS devices over REST](#how-to-mount-and-manage-ios-devices-over-rest)
+      - [How to mount and manage generic Linux VM devices over REST](#how-to-mount-and-manage-generic-linux-vm-devices-over-rest)
+      - [Pushing a config to a mounted node in dry run mode](#pushing-a-config-to-a-mounted-node-in-dry-run-mode)
+  * [Architecture](#architecture)
+    + [CLI topology](#cli-topology)
+      - [APIs](#apis)
+    + [CLI mountpoint](#cli-mountpoint)
+      - [APIs](#apis-1)
+      - [Translation layer](#translation-layer)
+        * [Device specific translation plugin](#device-specific-translation-plugin)
+          + [Units](#units)
+      - [Transport layer](#transport-layer)
+  * [Data processing](#data-processing)
+    + [Transactions and revert](#transactions-and-revert)
+    + [Reconciliation](#reconciliation)
+  * [Supported devices](#supported-devices)
+  * [Feature history guide](#feature-history-guide)
+  * [Strategies to connect to CLI devices](#strategies-to-connect-to-cli-devices)
+    + [KeepaliveCli mechanism](#keepalivecli-mechanism)
+    + [LazyCli mechanism](#lazycli-mechanism)
+
 ## Usage - Setup
 ### FRINX ODL - Install features
 [Run FRINX ODL](../../Operations_Manual/running-frinx-odl-initial.html).
