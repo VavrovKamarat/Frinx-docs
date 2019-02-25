@@ -342,3 +342,30 @@ The following table records the FRINX ODL versions in which particular CLI featu
 | Feature introduced in | FRINX 2.3.1 | Openconfig interface YANG models support: Interface Ipv4 read/write support                                                                                                                                                                                                    |
 | Feature introduced in | FRINX 2.3.1 | Openconfig BGP & RIB YANG models read support                                                                                                                                                                                                                                  |
 | Feature introduced in | FRINX 2.3.0 | Support for Cisco IOS Classic                                                                                                                                                                                                                                                  |
+
+## Strategies to connect to CLI devices
+
+Currently we use two strategies to connect to CLI devices. the first bares the name **Keepalive** and the second is called **Lazy**.
+
+### KeepaliveCli mechanism
+
+ - Keepalive CLI strategy attempts to keep the conneciton always open
+ - It manages the connection to stay open by invoking a keepalive command (ENTER) in periodic cycles
+ - Mechanism expects that the keepalive has to return within a certain timeout
+ - If it doesn't return, connection is consiered corrupted and reconnected
+
+![Keepalive_connection](Keepalive_connection.png)
+
+### LazyCli mechanism
+
+ - Lazy CLI strategy, unlike Keepalive, uses a *lazy-timeout* parameter to close the connection if no command was entered during waiting period
+ - If the timeout period is reached, connection is silently closed, even though the CLI object acts as if the connection is still in use
+ - If a command is executed while the lazy timeout window is open, the timeout period is reset
+ - If a command is executed while connection was silently closed, the connection will be reestablished
+ - If the silent reconnect fails, error is reported to upper layers and full reconnect is issued. Just like in case of KeppaliveCli
+
+**Failure detection**: To verify that commands do not run infinitely after every command, (ENTER) command is executed. That has to be completed before *command-timeout* is reached. If the (ENTER) command fails to execute, full reconnect is issued.
+
+![LazyCli_connection](LazyCli_connection.png)
+
+
