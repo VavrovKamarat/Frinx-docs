@@ -311,7 +311,7 @@ Please click [here](cli_supported_devices.md) for a structured list of device ty
 
 ## Strategies to connect to CLI devices
 
-Currently we use two strategies to connect to CLI devices. the first bares the name **Keepalive** and the second is called **Lazy**.
+Currently we use two strategies to connect to CLI devices. The first bares the name **Keepalive** and the second is called **Lazy**.
 
 ### KeepaliveCli mechanism
 
