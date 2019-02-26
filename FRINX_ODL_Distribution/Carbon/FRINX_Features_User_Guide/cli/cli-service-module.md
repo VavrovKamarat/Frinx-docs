@@ -28,7 +28,6 @@ Table of Contents:
     + [Transactions and revert](#transactions-and-revert)
     + [Reconciliation](#reconciliation)
   * [Supported devices](#supported-devices)
-  * [Feature history guide](#feature-history-guide)
   * [Strategies to connect to CLI devices](#strategies-to-connect-to-cli-devices)
     + [KeepaliveCli mechanism](#keepalivecli-mechanism)
     + [LazyCli mechanism](#lazycli-mechanism)
@@ -304,57 +303,11 @@ This is useful when Uniconfig framework is installed in Opendaylight. Uniconfig 
 That's why it is advised to turn off reconciliation on the CLI layer when using Uniconfig framework.
 
 ## Supported devices
-Please see [here](cli_supported_devices.md) for a structured list of device types currently supported by the CLI southbound plugin and configuration aspects implemented for them.
+Please click [here](cli_supported_devices.md) for a structured list of device types currently supported by the CLI southbound plugin and configuration aspects implemented for them.
 
 *For a hands-on tour of the CLI service module from within your browser, please try our [playground](http://46.229.232.136:7777/)*
 
 *For more information, please contact us at info@frinx.io*
-
-## Feature history guide
-The following table records the FRINX ODL versions in which particular CLI features and device support were introduced:  
-
-| FEATURE GUIDE         |             |                                                                                                                                                                                                                                                                                |
-|-----------------------|-------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| CLI plugin:           |             |                                                                                                                                                                                                                                                                                |
-| Feature introduced in | FRINX 3.1.3 | Removed “safe-command-execution” from mount request |
-| Feature introduced in | FRINX 3.1.3 | Do not return default data for non existing nodes |
-| Feature introduced in | FRINX 3.1.3 | Fix IO issues causing multiple network connections to device after reconnect |
-| Feature introduced in | FRINX 3.1.3 | IOS Classic & XR: Define supported versions for IOS and IOS XR devices for cli management: IOS [12.*, 15.*], IOS XR [4.*, 5.*, 6.*] |
-| Feature introduced in | FRINX 3.1.3 | IOS XR: Call “configure terminal” and “commit” commands only once per transaction for IOS XR |
-| Feature introduced in | FRINX 3.1.3 | IOS Classic & XR: Rely on device command validation instead of validation on ODL side for cli devices: IOS, IOS XE and IOS XR |
-| Feature introduced in | FRINX 3.1.3 | IOS Classic: Use only show running-config commands to pull configuration from IOS classic and XE |
-| Feature introduced in | FRINX 3.1.3 | IOS XR: Routing protocol enhancements for IOS XR |
-| Feature introduced in | FRINX 3.1.3 | IOS XR: LAG interface management enhancements for IOS XR |
-| Feature introduced in | FRINX 3.1.3 | IOS XR: Interface management enhancements for IOS XR |
-| Feature introduced in | FRINX 3.1.3 | IOS XR: Route policy management added for IOS XR |
-| Feature introduced in | FRINX 3.1.3 | IOS XR: ACL management added for IOS XR |
-| Feature introduced in | FRINX 3.1.3 | IOS XR: QOS management added for IOS XR |
-| Feature introduced in | FRINX 3.1.3 | IOS Classic: BGP peer group management added for IOS classic and IOS XE|
-| Feature introduced in | FRINX 3.1.3 | Configuration metadata (last commit fingerprint) exposed for devices                                                                                                                                                                                                           |
-| Feature introduced in | FRINX 3.1.2 | Added caching of command outputs when root element is read - We now provide intelligent caching/preprocessing of commands when e.g. sh run interface Loopback1 is invoked, while reading all configuration from the device, we split the commands, execute just a single sh run and parse the output modifiers internally.                                          |
-| Feature introduced in | FRINX 3.1.1 | Safe-command-execution for CLI connections - the CLI session now waits for the device to echo back each command. So whenever a device takes longer to process a particular command, FRINX ODL waits before issuing the subsequent one                                          |
-| Feature introduced in | FRINX 3.1.1 | Support for 'secret' parameter when mounting a device (normally a Cisco device) for accessing privileged mode                                          |
-| Feature introduced in | FRINX 3.1.1 | Reconciliation – CLI cache in FRINX ODL can now be also reconciled with 'read configuraton root' (in the case of RESTCONF it’s a GET operation to the entire configuration subtree of a mounted device)                                                                        |
-| Feature introduced in | FRINX 2.3.1 | Keepalive settings of CLI connection extracted into CLI node configuration                                                                                                                                                                                                     |
-| Feature introduced in | FRINX 2.3.1 | Translate registry additional information: Actual YANG model nodes that are supported/implemented are listed for each YANG model                                                                                                                                               |
-| Feature introduced in | FRINX 2.3.1 | Dry-run and journaling capabilities for CLI mountpoint: Enables users to write/read configuration to/from device as a dry-run operation to check what commands will ODL execute. Journal captures all executed commands for a CLI mountpoint and makes them visible for users. |
-| Feature introduced in | FRINX 2.3.1 | VRF support for local routing unit                                                                                                                                                                                                                                             |
-| Feature introduced in | FRINX 2.3.0 | Initial release: CLI service module with support for structured and unstructured data exchange                                                                                                                                                                                 |
-| Device support:       |             |                                                                                                                                                                                                                                                                                |
-| Feature introduced in | FRINX 3.1.1 | IOS Classic:Dry-run                                                                                                                                                                                                                                                            |
-| Feature introduced in | FRINX 3.1.1 | IOS XR: LAG interfaces                                                                                                                                                                                                                                                         |
-| Feature introduced in | FRINX 3.1.1 | IOS XR: TenGigE interfaces                                                                                                                                                                                                                                                     |
-| Feature introduced in | FRINX 3.1.1 | IOS XR: MPLS TE, MPLS RSVP                                                                                                                                                                                                                                                     |
-| Feature introduced in | FRINX 3.1.1 | IOS XR: ACL                                                                                                                                                                                                                                                                    |
-| Feature introduced in | FRINX 3.1.1 | IOS XR: ACL                                                                                                                                                                                                                                                                    |
-| Feature introduced in | FRINX 3.1.1 | IOS XR: logging unit                                                                                                                                                                                                                                                           |
-| Feature introduced in | FRINX 3.1.1 | Brocade IronWare: network instance, CDP, IFC, essential, INIT units                                                                                                                                                                                                            |
-| Feature introduced in | FRINX 3.1.1 | Adds support for Brocade IronWare                                                                                                                                                                                                                                              |
-| Feature introduced in | FRINX 3.1.0 | Adds support for Cisco IOS XR                                                                                                                                                                                                                                                  |
-| Feature introduced in | FRINX 2.3.1 | Openconfig interface YANG models support: Interface Configuration and State read/write support                                                                                                                                                                                 |
-| Feature introduced in | FRINX 2.3.1 | Openconfig interface YANG models support: Interface Ipv4 read/write support                                                                                                                                                                                                    |
-| Feature introduced in | FRINX 2.3.1 | Openconfig BGP & RIB YANG models read support                                                                                                                                                                                                                                  |
-| Feature introduced in | FRINX 2.3.0 | Support for Cisco IOS Classic                                                                                                                                                                                                                                                  |
 
 ## Strategies to connect to CLI devices
 
