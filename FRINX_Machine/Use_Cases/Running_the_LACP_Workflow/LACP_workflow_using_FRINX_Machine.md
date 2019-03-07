@@ -11,7 +11,7 @@ In the next step we will create a link between node 1 and node 2.
 Click on:
 
  * Metadata
-  * Workflow Defs
+   * Workflow Defs
 
 Then select the workflow: **Link_aggregation**
 
