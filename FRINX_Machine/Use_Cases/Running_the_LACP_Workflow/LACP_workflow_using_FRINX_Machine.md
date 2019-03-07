@@ -1,6 +1,6 @@
 # LACP workflow using FRINX Machine
 
-This workflow is using uniconfig to create LAG interface on two nodes and assign the bundle id to given interfaces on both nodes.
+This workflow is using uniconfig to create LAG interface on two nodes and assigns the bundle id to given interfaces on both nodes.
 
 **Supported device**: ios-xr mounted as a cli device
 
