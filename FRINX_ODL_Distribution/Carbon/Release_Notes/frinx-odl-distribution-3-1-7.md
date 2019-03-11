@@ -1,6 +1,7 @@
 [Documentation main page](https://frinxio.github.io/Frinx-docs/)
 [Carbon Release Notes main page](https://frinxio.github.io/Frinx-docs/FRINX_ODL_Distribution/Carbon/release_notes.html)
 
+
 This document describes the latest changes, additions, known issues, and fixes for the Frinx ODL Distribution.<!--more-->
 
 **Note that FRINX ODL distribution 3.1.7 requires Java 8 (Openjdk 1.8.0-171 or newer)**

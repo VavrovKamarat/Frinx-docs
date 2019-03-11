@@ -1,6 +1,7 @@
 [Documentation main page](https://frinxio.github.io/Frinx-docs/)
 [Carbon Release Notes main page](https://frinxio.github.io/Frinx-docs/FRINX_ODL_Distribution/Carbon/release_notes.html)
 
+
 | Name                                              | Version                          |
 |---------------------------------------------------|----------------------------------|
 | odl-netconf-all                                   | 1.2.1-Carbon-SR1.3_1_7-frinxodl  |
