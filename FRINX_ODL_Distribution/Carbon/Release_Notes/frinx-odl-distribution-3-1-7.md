@@ -75,12 +75,12 @@ CentOS: In a terminal type
 #### Unified topology
 
 * **AutoCommit is set to TRUE by default for all netconf sessions** - Auto commit sends any update to netconf devices in a dedicated transaction. This is to work around netconf issues of Network devices. To disable the auto commit feature for a specific device, set useAutoCommit() to false in any of its units
- * Current settings:
-   * XR 6.1.X	TRUE
-   * XR 6.2.X +	FALSE
-   * XR 7	FALSE
-   * Junos 17	FALSE
-   * Junos 18	FALSE
+ * **Current settings**:
+   * XR 6.1.X      TRUE
+   * XR 6.2.X +	   FALSE
+   * XR 7	   FALSE
+   * Junos 17	   FALSE
+   * Junos 18	   FALSE
 
 #### Openconfig
 

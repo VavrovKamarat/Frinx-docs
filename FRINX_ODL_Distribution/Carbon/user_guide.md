@@ -12,3 +12,4 @@
 [RESTCONF](FRINX_Features_User_Guide/restconf.md)  
 [NETCONF](FRINX_Features_User_Guide/netconf-intro.md)  
 [NETCONF Clustering](FRINX_Features_User_Guide/netconf-clustering.md)   
+[Swagger](FRINX_Features_User_Guide/swagger-docs.md)
