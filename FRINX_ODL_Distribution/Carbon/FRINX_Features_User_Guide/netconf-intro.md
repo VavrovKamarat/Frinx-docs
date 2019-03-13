@@ -2,17 +2,20 @@
 [FRINX Features User Guide main page](https://frinxio.github.io/Frinx-docs/FRINX_ODL_Distribution/Carbon/user_guide.html)
 <!-- TOC -->
 
-- [NETCONF: Overview and use within the FRINX ODL Distribution](#netconf-overview-and-use-within-the-frinx-odl-distribution)
-    - [Overview](#overview)
-    - [Southbound (netconf-connector)](#southbound-netconf-connector)
-        - [Netconf-connector configuration](#netconf-connector-configuration)
-            - [Default configuration](#default-configuration)
-            - [Spawning additional netconf-connectors while the controller is running](#spawning-additional-netconf-connectors-while-the-controller-is-running)
-            - [Connecting to a device not supporting NETCONF monitoring](#connecting-to-a-device-not-supporting-netconf-monitoring)
-            - [Reconfiguring Netconf-Connector While the Controller is Running](#reconfiguring-netconf-connector-while-the-controller-is-running)
-            - [Destroying Netconf-Connector While the Controller is Running](#destroying-netconf-connector-while-the-controller-is-running)
-            - [Adjusting reconnection settings](#adjusting-reconnection-settings)
-    - [How does the FRINX ODL Distribution use NETCONF?](#how-does-the-frinx-odl-distribution-use-netconf)
+- [NETCONF: Overview and use within the FRINX ODL Distribution](#netconf--overview-and-use-within-the-frinx-odl-distribution)
+  * [Overview](#overview)
+  * [Southbound (netconf-connector)](#southbound--netconf-connector-)
+    + [Netconf-connector configuration](#netconf-connector-configuration)
+      - [Default configuration](#default-configuration)
+      - [Spawning additional netconf-connectors while the controller is running](#spawning-additional-netconf-connectors-while-the-controller-is-running)
+      - [Connecting to a device not supporting NETCONF monitoring](#connecting-to-a-device-not-supporting-netconf-monitoring)
+      - [Reconfiguring Netconf-Connector While the Controller is Running](#reconfiguring-netconf-connector-while-the-controller-is-running)
+      - [Destroying Netconf-Connector While the Controller is Running](#destroying-netconf-connector-while-the-controller-is-running)
+      - [Adjusting reconnection settings <a name="adjusting-reconnection-settings"></a>](#adjusting-reconnection-settings--a-name--adjusting-reconnection-settings----a-)
+  * [NETCONF test tool](#netconf-test-tool)
+    + [Increase the maximum number of opened files](#increase-the-maximum-number-of-opened-files)
+      - [How to increase the maximum possible number of opened files - descriptors in Linux system](#how-to-increase-the-maximum-possible-number-of-opened-files---descriptors-in-linux-system)
+  * [How does the FRINX ODL Distribution use NETCONF?](#how-does-the-frinx-odl-distribution-use-netconf-)
 
 <!-- /TOC -->
 # NETCONF: Overview and use within the FRINX ODL Distribution
@@ -212,6 +215,41 @@ Example of setting of described parameters at creation of netconf mountpoint - m
    ]
 }
 ```
+
+## NETCONF test tool
+
+Netconf testtool (or netconf device simulator) is a tool that:
+
+* Simulates 1 or more netconf devices
+* Is suitable for scale testing
+* Uses core implementation of netconf server from ODL controller
+* Generates configuration files for controller so that controller distribution (karaf) can easily connect to all simulated devices
+* Provides broad configuration options
+* Supports notifications
+
+### Increase the maximum number of opened files
+
+#### How to increase the maximum possible number of opened files - descriptors in Linux system 
+
+If the buffering file for connection cannot be created on time it can cause continuous reconnection attempts and failure at the end. 
+Usually, the default soft limit is set to 1024 and hard limit to 4096. 
+
+Please, open "/etc/security/limits.conf" and modify the following lines (if they already are not defined):
+
+	[user-name] soft nofile 4096
+	[user-name] hard nofile 10240
+
+Replace [user-name] by login-name of the user under whom you start ODL and logout-login. 
+
+You can check the current limits using following commands:
+
+```
+ulimit -Hn
+ulimit -Sn
+```
+Soft limit 4096 and hard limit 10240 should be sufficient, but it depends on occupation by other applications and system too).
+
+**NOTE:** Configured value should not reach the one that applies for all users - "cat /proc/sys/fs/file-max".
 
 ## How does the FRINX ODL Distribution use NETCONF?
 The FRINX ODL Distribution's southbound APIs use a NETCONF connector to communicate with downstream devices. The northbound APIs expose the YANG models of connected devices. This makes it possible to examine the operational and config datastores and to configure devices using RPCs. RESTCONF maps a subset of these YANG models to a RESTful interface.
