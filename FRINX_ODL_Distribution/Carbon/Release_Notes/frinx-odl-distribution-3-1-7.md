@@ -108,6 +108,8 @@ CentOS: In a terminal type
 *   **Example LACP service implementation using generated Swagger based client code**
     *   [https://github.com/FRINXio/Lacp-service-labdocs](https://github.com/FRINXio/Lacp-service-labdocs)
 
+For more information and download links, please, visit [Swagger documentation page](https://frinxio.github.io/Frinx-docs/FRINX_ODL_Distribution/Carbon/FRINX_Features_User_Guide/swagger-docs.html)
+
 #### L3VPN service module
 
 *   **No longer supported** - The L3VPN implementation native to FRINX ODL will no longer be supported
