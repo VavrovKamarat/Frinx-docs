@@ -1,5 +1,5 @@
 [Documentation main page](https://frinxio.github.io/Frinx-docs/)  
-# FRINX Carbon Features: User Guide
+# FRINX Oxygen Features: User Guide
 
 [UniConfig overview](FRINX_Features_User_Guide/uniconfig/architecture/architecture.md)  
 [UniConfig API and use-cases](FRINX_Features_User_Guide/uniconfig/api_and_use_cases/api_and_use_cases.md)  
