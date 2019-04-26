@@ -1,6 +1,6 @@
 [Documentation main page](https://frinxio.github.io/Frinx-docs/)
 
-## FRINX ODL Distribution: Carbon 
+## FRINX ODL Distribution: Oxygen 
 [FRINX API](Oxygen/API.md)  
 [Operations Manual](Oxygen/operations_manual.md)  
 [FRINX Features: User Guide](Oxygen/user_guide.md)  
