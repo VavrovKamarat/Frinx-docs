@@ -1,5 +1,5 @@
 [Documentation main page](https://frinxio.github.io/Frinx-docs/)  
-# FRINX Carbon ODL Distribution: Operations Manual
+# FRINX Oxygen ODL Distribution: Operations Manual
 
 [Activating the FRINX ODL Distribution](Operations_Manual/running-frinx-odl-initial.md)  
 [Operating the FRINX ODL Distribution](Operations_Manual/running-frinx-odl-after-activation.md)   
